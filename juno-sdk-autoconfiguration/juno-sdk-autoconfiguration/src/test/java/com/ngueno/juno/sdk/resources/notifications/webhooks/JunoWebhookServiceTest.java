@@ -25,7 +25,7 @@ class JunoWebhookServiceTest extends AbstractNotificationsServiceTest {
         JunoWebhookCreateRequest request = new JunoWebhookCreateRequest("https://webhook.site/2a2b472a-5889-4a8c-8562-ebb0f28928df",
                 List.of("PAYMENT_NOTIFICATION"));
 
-        mockServerManager().expectCreateWebhook();
+        mockServerManager().expectWebhookCreate();
 
         WebhookResource resource = service.createWebhook(request);
 
@@ -36,7 +36,7 @@ class JunoWebhookServiceTest extends AbstractNotificationsServiceTest {
     void updateWebhook() {
         JunoWebhookUpdateRequest request = new JunoWebhookUpdateRequest("wbh_8E345951C46BBEED", List.of("PAYMENT_NOTIFICATION"));
 
-        mockServerManager().expectUpdateWebhook(request);
+        mockServerManager().expectWebhookUpdate(request);
 
         WebhookResource resource = service.updateWebhook(request);
 
@@ -45,7 +45,7 @@ class JunoWebhookServiceTest extends AbstractNotificationsServiceTest {
 
     @Test
     void listWebhook() {
-        mockServerManager().expectListWebhook();
+        mockServerManager().expectWebhookList();
 
         WebhookResources resources = service.listWebhooks();
 
@@ -57,7 +57,7 @@ class JunoWebhookServiceTest extends AbstractNotificationsServiceTest {
     void findWebhook() {
         JunoWebhookFindRequest request = new JunoWebhookFindRequest("wbh_8E345951C46BBEED");
 
-        mockServerManager().expectFindWebhook(request);
+        mockServerManager().expectWebhookFind(request);
 
         WebhookResource resource = service.findWebhook(request);
         assertWebhook(resource);
@@ -67,7 +67,7 @@ class JunoWebhookServiceTest extends AbstractNotificationsServiceTest {
     void removeWebhook() {
         JunoWebhookRemoveRequest request = new JunoWebhookRemoveRequest("wbh_8E345951C46BBEED");
 
-        mockServerManager().expectRemoveWebhook(request);
+        mockServerManager().expectWebhookRemove(request);
 
         service.removeWebhook(request);
     }

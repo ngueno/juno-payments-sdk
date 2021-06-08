@@ -461,7 +461,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectCreateWebhook() {
+    public void expectWebhookCreate() {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(POST.name()) //
@@ -473,7 +473,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectListWebhook() {
+    public void expectWebhookList() {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(GET.name()) //
@@ -485,7 +485,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectUpdateWebhook(JunoWebhookUpdateRequest request) {
+    public void expectWebhookUpdate(JunoWebhookUpdateRequest request) {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(PATCH.name()) //
@@ -497,7 +497,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectRemoveWebhook(JunoWebhookRemoveRequest request) {
+    public void expectWebhookRemove(JunoWebhookRemoveRequest request) {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(DELETE.name()) //
@@ -509,13 +509,25 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectFindWebhook(JunoWebhookFindRequest request) {
+    public void expectWebhookFind(JunoWebhookFindRequest request) {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(GET.name()) //
                         .withPath("/notifications/webhooks/" + request.getWebhookId())) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "id", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountFind() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "GET.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //

@@ -5,5 +5,5 @@ import lombok.Getter;
 @Getter
 public enum EventTypeStatus {
 
-    ACTIVE, DEPRECATED;
+    ENABLED, DEPRECATED;
 }

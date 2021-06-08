@@ -3,17 +3,13 @@ package com.ngueno.juno.sdk.test.mockserver;
 import static com.ngueno.juno.sdk.test.FixtureHelper.MEDIA_TYPE_TEXT_PLAIN;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
-import static org.mockserver.model.MediaType.APPLICATION_JSON;
+import static org.mockserver.model.MediaType.APPLICATION_JSON_UTF_8;
 import static org.mockserver.model.StringBody.subString;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
-
-import org.mockserver.integration.ClientAndServer;
-import org.mockserver.model.Header;
-import org.mockserver.model.StringBody;
 
 import com.ngueno.juno.sdk.config.JunoApiHeaders;
 import com.ngueno.juno.sdk.resources.base.model.TransferType;
@@ -30,6 +26,10 @@ import com.ngueno.juno.sdk.resources.payments.model.JunoPaymentRefundRequest;
 import com.ngueno.juno.sdk.resources.subscriptions.model.JunoPlanCreateRequest;
 import com.ngueno.juno.sdk.resources.subscriptions.model.JunoSubscriptionCreateRequest;
 import com.ngueno.juno.sdk.test.FixtureHelper;
+
+import org.mockserver.integration.ClientAndServer;
+import org.mockserver.model.Header;
+import org.mockserver.model.StringBody;
 
 public final class MockServerManager extends AbstractExpectationConfigurer {
 
@@ -58,7 +58,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("oauth", "token", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -72,7 +72,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("creditcards", "tokenization", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -86,7 +86,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("charges", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -102,7 +102,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath(uri)) //
                 .respond( //
                         response(getResource("charges", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -114,7 +114,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/charges/" + chargeId)) //
                 .respond( //
                         response(getResource("charges", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -166,7 +166,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("plans", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -179,7 +179,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("plans", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -192,7 +192,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("plans", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -205,7 +205,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("plans", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -218,7 +218,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("plans", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -232,7 +232,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -245,7 +245,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -258,7 +258,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -271,7 +271,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -284,7 +284,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -297,7 +297,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -310,7 +310,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("subscriptions", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -324,7 +324,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("billpayments", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -351,7 +351,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("payments", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -365,7 +365,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("payments", "id", "refunds", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -379,7 +379,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("payments", "id", "capture", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -392,7 +392,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         ) //
                 .respond( //
                         response(getResource("balance", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -405,7 +405,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withBody(subString(TransferType.P2P.name()))) //
                 .respond( //
                         response(getResource("transfers", "p2p", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -418,7 +418,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withBody(subString(TransferType.PIX.name()))) //
                 .respond( //
                         response(getResource("transfers", "pix", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -431,7 +431,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withBody(subString(TransferType.DEFAULT_BANK_ACCOUNT.name()))) //
                 .respond( //
                         response(getResource("transfers", "defaultbankaccount", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -444,19 +444,19 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withBody(subString(TransferType.BANK_ACCOUNT.name()))) //
                 .respond( //
                         response(getResource("transfers", "bankaccount", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
 
     public void expectListEventTypes() {
         mockServer.when( //
-                getRequestExpectation() //
+                getRequestExpectationWithoutResourceToken() //
                         .withMethod(GET.name()) //
                         .withPath("/notifications/event-types")) //
                 .respond( //
                         response(getResource("notifications", "events", "eventtypes", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -468,7 +468,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/notifications/webhooks")) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "POST.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -480,7 +480,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/notifications/webhooks")) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -492,7 +492,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/notifications/webhooks/" + request.getWebhookId())) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "id", "PATCH.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
@@ -504,7 +504,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/notifications/webhooks/" + request.getWebhookId())) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "id", "DELETE.mock")) //
-                                .withContentType(APPLICATION_JSON) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(204) //
                 ); //
     }
@@ -516,8 +516,8 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/notifications/webhooks/" + request.getWebhookId())) //
                 .respond( //
                         response(getResource("notifications", "webhooks", "id", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON) //
-                                .withStatusCode(204) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
                 ); //
     }
 

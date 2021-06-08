@@ -1,5 +1,8 @@
 package com.ngueno.juno.sdk.resources.base.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +23,20 @@ public class BankAccount {
 
     private String ispb;
 
+    @JsonInclude(value = Include.NON_NULL)
+    private BankAccountHolder accountHolder;
+
+    public static BankAccount forDigitalAccountCreation(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber,
+            BankAccountType accountType, BankAccountHolder accountHolder) {
+        return new BankAccount(bankNumber, agencyNumber, accountNumber, accountComplementNumber, accountType, accountHolder);
+    }
+
     public static BankAccount forP2pTransfer(String digitalAccountId) {
         return new BankAccount(digitalAccountId);
     }
 
-    public static BankAccount forBankAccountTranfer(String bankNumber, String agencyNumber, String accountNumber,
-            String accountComplementNumber, BankAccountType accountType) {
+    public static BankAccount forBankAccountTranfer(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber,
+            BankAccountType accountType) {
         return new BankAccount(bankNumber, agencyNumber, accountNumber, accountComplementNumber, accountType);
     }
 
@@ -38,19 +49,24 @@ public class BankAccount {
         this.accountNumber = accountNumber;
     }
 
-    private BankAccount(String bankNumber, String ispb, String agencyNumber, String accountNumber,
-            String accountComplementNumber, BankAccountType accountType) {
+    private BankAccount(String bankNumber, String ispb, String agencyNumber, String accountNumber, String accountComplementNumber,
+            BankAccountType accountType) {
         this(bankNumber, agencyNumber, accountNumber, accountComplementNumber, accountType);
         this.ispb = ispb;
     }
 
-    public BankAccount(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber,
-            BankAccountType accountType) {
+    public BankAccount(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber, BankAccountType accountType) {
+        this(bankNumber, agencyNumber, accountNumber, accountComplementNumber, accountType, null);
+    }
+
+    public BankAccount(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber, BankAccountType accountType,
+            BankAccountHolder accountHolder) {
         this.bankNumber = bankNumber;
         this.agencyNumber = agencyNumber;
         this.accountNumber = accountNumber;
         this.accountComplementNumber = accountComplementNumber;
         this.accountType = accountType;
+        this.accountHolder = accountHolder;
     }
 
 }

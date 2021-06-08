@@ -1,0 +1,14 @@
+{
+    "id": "dac_BF7FCE967887DCF4",
+    "type": "PAYMENT",
+    "status": "VERIFIED",
+    "personType": "F",
+    "document": "09149649911",
+    "createdOn": "2019-03-12T20:31:33.000-03:00",
+    "accountNumber": 10000044315,
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/digital-accounts/dac_BF7FCE967887DCF4"
+        }
+    }
+}

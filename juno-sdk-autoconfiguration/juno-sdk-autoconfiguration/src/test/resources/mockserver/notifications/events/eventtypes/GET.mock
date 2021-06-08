@@ -6,6 +6,12 @@
                 "name": "DOCUMENT_STATUS_CHANGED",
                 "label": "O status de um documento foi alterado",
                 "status": "ENABLED"
+            },
+            {
+                "id": "evt_4B3A979C94349E9E",
+                "name": "DIGITAL_ACCOUNT_STATUS_CHANGED",
+                "label": "O estado de uma conta digital foi alterado",
+                "status": "ENABLED"
             }
         ]
     },

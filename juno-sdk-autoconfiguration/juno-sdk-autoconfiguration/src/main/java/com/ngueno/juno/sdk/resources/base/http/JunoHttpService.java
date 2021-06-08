@@ -15,18 +15,20 @@ import java.util.function.Consumer;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
-
 import com.ngueno.juno.sdk.model.environment.JunoEnvironment;
 import com.ngueno.juno.sdk.model.error.JunoApiError;
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.resources.oauth.ProxyJunoOAuthService;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.client.reactive.ClientHttpRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserter;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Mono;
 
@@ -77,7 +79,7 @@ public class JunoHttpService {
         return webClient //
                 .post() //
                 .uri(uri) //
-                .body(request != null ? BodyInserters.fromValue(request) : null) //
+                .body(toBody(request)) //
                 .headers(configureHeaders(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
@@ -93,7 +95,7 @@ public class JunoHttpService {
         return webClient //
                 .put() //
                 .uri(uri) //
-                .body(request != null ? BodyInserters.fromValue(request) : null) //
+                .body(toBody(request)) //
                 .headers(configureHeaders(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
@@ -114,14 +116,9 @@ public class JunoHttpService {
     }
 
     public <T> T delete(String uri, String resourceToken, Class<T> responseClass) {
-        return delete(uri, resourceToken, null, responseClass);
-    }
-
-    public <T> T delete(String uri, String resourceToken, JunoBaseRequest request, Class<T> responseClass) {
         return webClient //
-                .patch() //
+                .delete() //
                 .uri(uri) //
-                .body(BodyInserters.fromValue(request)) //
                 .headers(configureHeaders(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
@@ -140,6 +137,10 @@ public class JunoHttpService {
 
     private Mono<? extends Throwable> handleError(ClientResponse clientResponse) {
         return Mono.just(new JunoApiIntegrationException(clientResponse.bodyToMono(JunoApiError.class).block()));
+    }
+
+    private BodyInserter<?, ? super ClientHttpRequest> toBody(JunoBaseRequest request) {
+        return request != null ? BodyInserters.fromValue(request) : null;
     }
 
     private WebClient webClient;

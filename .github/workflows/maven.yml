@@ -27,13 +27,3 @@ jobs:
       
     - name: Build juno-sdk-starter
       run: mvn -B package --file ./juno-sdk-autoconfiguration/juno-sdk-starter/pom.xml
-      
-    - name: SonarCloud Scan juno-sdk-autoconfiguration
-      uses: SonarSource/sonarcloud-github-action@v1.6
-      with:
-        projectBaseDir: ./juno-sdk-autoconfiguration/juno-sdk-autoconfiguration
-
-    - name: SonarCloud Scan juno-sdk-starter
-      uses: SonarSource/sonarcloud-github-action@v1.6
-      with:
-        projectBaseDir: ./juno-sdk-autoconfiguration/juno-sdk-starter

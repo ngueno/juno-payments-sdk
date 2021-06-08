@@ -1,0 +1,17 @@
+{
+    "_embedded": {
+        "eventTypes": [
+            {
+                "id": "evt_DC2E7E8848B08C62",
+                "name": "DOCUMENT_STATUS_CHANGED",
+                "label": "O status de um documento foi alterado",
+                "status": "ENABLED"
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/notifications/event-types"
+        }
+    }
+}

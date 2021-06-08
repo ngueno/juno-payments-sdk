@@ -1,0 +1,20 @@
+{
+    "_embedded": {
+        "charges": [
+            {
+                "id": "chr_575A9ADE6C14BFD4330B28BA60253850",
+                "code": 136399592,
+                "reference": "REF1",
+                "dueDate": "2021-05-27",
+                "checkoutUrl": "https://dummy-env/checkout/4FA21093ACBF3F9DDC0084987C5208DEB8BCD432C817E8D6",
+                "amount": 1000.00,
+                "status": "ACTIVE",
+                "_links": {
+                    "self": {
+                        "href": "https://dummy-env/api-integration/charges/chr_575A9ADE6C14BFD4330B28BA60253850"
+                    }
+                }
+            }
+        ]
+    }
+}

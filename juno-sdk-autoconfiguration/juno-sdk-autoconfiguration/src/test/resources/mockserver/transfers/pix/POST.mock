@@ -1,0 +1,19 @@
+{
+    "id": "pix_D67A21E89B8B00F9",
+    "digitalAccountId": "dac_BF7FCE967887DCF4",
+    "creationDate": "2021-04-16 23:51:31",
+    "transferDate": "2021-04-16 23:51:31",
+    "amount": 50.00,
+    "status": "AWAITING_EXECUTION",
+    "recipient": {
+        "name": "Norton Tanner Gueno",
+        "document": "99999999999",
+        "bankAccount": {
+            "ispb": "0",
+            "bankNumber": "001",
+            "agencyNumber": "6525",
+            "accountNumber": "1221431-0",
+            "accountType": "CHECKING"
+        }
+    }
+}

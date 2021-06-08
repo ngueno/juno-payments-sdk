@@ -1,0 +1,8 @@
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJub3J0b250Z3Vlbm9AaG90bWFpbC5jb20iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjE2MzY1MjMxLCJqdGkiOiIxcDZ4cVlhdXJxOGYyRmpLbnE5dnhLaUthVDgiLCJjbGllbnRfaWQiOiIyaGZCdXd5UjIxQ1liNUU4In0.ECSOVi1ICvvkw4oV7C3kGVQYRDAsft7u8jJWGqptx8dKqnOEJgUBWl9MB5EjHFWfYmEALFCgmHWYpGgKASDJmk3yJubEg_SaMpxTdsMSdnj3dxvGtXOj3hNi-2CsbPecckya8KjARAFWxLOJxgo813dPHNjSg5cU5JfkjHQaaR5swUap1h_aG9jJ3boRcHl9n_L10DfOlhZcX5NmdtNgpoPhOYRbS7b_Lzromy_kmBVl_d3-sp3zb3Sgio_FbF4A1LDxH44tz2EkiNeBlLRJvD3NzIPY8Uz06e58K1qq8TA6KDp-LY_saQgIrs1ww4GTtAZac1PqQvsHsMbm0JuGZA",
+    "token_type": "bearer",
+    "expires_in": 86399,
+    "scope": "all",
+    "user_name": "mysdk@somerandomemail.com",
+    "jti": "XPNkRjUk2vAgAZHhdsh9l5pocPkl"
+}

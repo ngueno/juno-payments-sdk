@@ -29,13 +29,13 @@ class JunoPublicKeyTest extends AbstractSpringBootTest {
 
     @Test
     void toStringTest() {
-        assertEquals("JunoPublicKey(key=-----BEGIN PUBLIC KEY-----\r\n" //
-                + "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4AaeEEJCs+IzRsNZkrBiJYcGanhE1eZl\r\n" //
-                + "4LM5kMcRLuVBwxh5SLrUUVMdGZ8xvHTs8Lz5qtwfSBBvtG9EXQo+cPGa6zGF48FQIe4eWu9DKY5F\r\n" //
-                + "6yR2dBOc7ssAdzCaeW4cTz7aLsr6pLfHqkguFSFIW+4t61Yipb3G/HmEGBk1B8c5PWA8ajRFwLmT\r\n" //
-                + "kMxAgD7wQU/vqnYEJOvOZgxyhsuEOEDD+CfCRqRjk0YcUUyDmWNVH2vlYFYgmEZO+sFLnk/YVQu9\r\n" //
-                + "Q+Dh/WuvZJtGu9iax50a0E0DfddUO8Ay/8FPQI1xJB40ZKpGw/BAL6aqu6klP5ij7mIBwI8SnlMZ\r\n" //
-                + "NQnX+QIDAQAB\r\n" //
+        assertEquals("JunoPublicKey(key=-----BEGIN PUBLIC KEY-----" + System.lineSeparator() //
+                + "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4AaeEEJCs+IzRsNZkrBiJYcGanhE1eZl" + System.lineSeparator() //
+                + "4LM5kMcRLuVBwxh5SLrUUVMdGZ8xvHTs8Lz5qtwfSBBvtG9EXQo+cPGa6zGF48FQIe4eWu9DKY5F" + System.lineSeparator() //
+                + "6yR2dBOc7ssAdzCaeW4cTz7aLsr6pLfHqkguFSFIW+4t61Yipb3G/HmEGBk1B8c5PWA8ajRFwLmT" + System.lineSeparator() //
+                + "kMxAgD7wQU/vqnYEJOvOZgxyhsuEOEDD+CfCRqRjk0YcUUyDmWNVH2vlYFYgmEZO+sFLnk/YVQu9" + System.lineSeparator() //
+                + "Q+Dh/WuvZJtGu9iax50a0E0DfddUO8Ay/8FPQI1xJB40ZKpGw/BAL6aqu6klP5ij7mIBwI8SnlMZ" + System.lineSeparator() //
+                + "NQnX+QIDAQAB" + System.lineSeparator() //
                 + "-----END PUBLIC KEY-----)", new JunoPublicKey(getMockKey()).toString());
     }
 

@@ -521,13 +521,25 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectDigitalAccountFind() {
+    public void expectDigitalAccountFindCompany() {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(GET.name()) //
                         .withPath("/digital-accounts")) //
                 .respond( //
-                        response(getResource("digitalaccounts", "GET.mock")) //
+                        response(getResource("digitalaccounts", "company", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountFindPerson() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "person", "GET.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //

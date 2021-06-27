@@ -1,0 +1,15 @@
+{
+    "id": "p2p_5EDA3E85F3D4D0C8",
+    "digitalAccountId": "dac_BF7FCE967887DCF4",
+    "creationDate": "2021-04-16 23:47:09",
+    "transferDate": null,
+    "amount": 50.00,
+    "status": "REQUESTED",
+    "recipient": {
+        "name": "Norton Tanner Gueno",
+        "document": "99999999999",
+        "bankAccount": {
+            "accountNumber": "dac_FE92DCAC4561C7CE"
+        }
+    }
+}

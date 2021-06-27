@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 import javax.annotation.Resource;
 
 import com.ngueno.juno.sdk.resources.digitalaccounts.model.DigitalAccountResource;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
 import org.junit.jupiter.api.Test;
 
-class JunoDigitalAccountServiceTest extends AbstractServiceTest {
+class JunoDigitalAccountServiceTest extends AbstractSpringBootTest {
 
     @Test
     void findDigitalAccount() {

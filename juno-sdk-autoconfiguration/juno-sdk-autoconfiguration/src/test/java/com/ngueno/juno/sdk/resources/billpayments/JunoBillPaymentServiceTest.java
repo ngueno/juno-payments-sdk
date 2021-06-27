@@ -10,9 +10,9 @@ import com.ngueno.juno.sdk.resources.base.model.BillPaymentStatus;
 import com.ngueno.juno.sdk.resources.base.model.BillPaymentType;
 import com.ngueno.juno.sdk.resources.billpayments.model.BillPaymentResource;
 import com.ngueno.juno.sdk.resources.billpayments.model.JunoBillPaymentPayBillRequest;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoBillPaymentServiceTest extends AbstractServiceTest {
+class JunoBillPaymentServiceTest extends AbstractSpringBootTest {
 
     @Test
     void payBill() {

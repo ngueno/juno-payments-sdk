@@ -18,8 +18,11 @@ public class JunoApiCredentials {
     @Getter
     private final String resourceToken;
     @Getter
-    private final String publicKey;
+    private final String publicToken;
 
+    /**
+     * Base64(juno.credentials.clientId:juno.credentials.clientSecret
+     */
     public String getAuthorization() {
         return Base64Utils.encodeToString(String.format(AUTH_PLACEHOLDER, clientId, clientSecret).getBytes(UTF_8));
     }

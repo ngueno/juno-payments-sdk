@@ -8,11 +8,9 @@ import com.ngueno.juno.sdk.resources.base.http.JunoBaseRequest;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 public class JunoPaymentCaptureRequest implements JunoBaseRequest {
 

@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
 
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoCredentialsServiceTest extends AbstractServiceTest {
+class JunoCredentialsServiceTest extends AbstractSpringBootTest {
 
     @Test
     void getPublicKey() {

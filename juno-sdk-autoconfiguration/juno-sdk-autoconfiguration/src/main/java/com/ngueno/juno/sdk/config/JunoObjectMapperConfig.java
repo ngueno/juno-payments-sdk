@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class JunoObjectMapperConfig {
 
     @Bean
-    public Jackson2ObjectMapperBuilderCustomizer objectMapper() {
+    public Jackson2ObjectMapperBuilderCustomizer objectMapperCustomizer() {
         return builder -> {
             builder.failOnUnknownProperties(false);
             builder.failOnEmptyBeans(false);

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 public class SubscriptionResources extends JunoBaseEmbeddedResource<SubscriptionResource> {
 
     @Override

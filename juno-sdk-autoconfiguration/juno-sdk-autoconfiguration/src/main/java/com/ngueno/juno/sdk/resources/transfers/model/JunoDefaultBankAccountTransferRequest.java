@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import com.ngueno.juno.sdk.resources.base.model.TransferType;
 
+import lombok.ToString;
+
+@ToString(callSuper = true)
 public class JunoDefaultBankAccountTransferRequest extends JunoTransferRequest {
 
     public JunoDefaultBankAccountTransferRequest(BigDecimal amount) {

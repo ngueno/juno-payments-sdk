@@ -6,10 +6,8 @@ import com.ngueno.juno.sdk.resources.base.model.PaymentBilling;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 @Getter
-@ToString
 @RequiredArgsConstructor
 public class JunoPaymentCreateRequest implements JunoBaseRequest {
 

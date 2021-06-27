@@ -24,9 +24,9 @@ import com.ngueno.juno.sdk.resources.transfers.model.JunoDefaultBankAccountTrans
 import com.ngueno.juno.sdk.resources.transfers.model.JunoP2pTransferRequest;
 import com.ngueno.juno.sdk.resources.transfers.model.JunoPixTransferRequest;
 import com.ngueno.juno.sdk.resources.transfers.model.TransferResource;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoTransferServiceTest extends AbstractServiceTest {
+class JunoTransferServiceTest extends AbstractSpringBootTest {
 
     @Test
     void createP2pTransfer() {

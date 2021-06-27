@@ -19,9 +19,9 @@ import com.ngueno.juno.sdk.resources.subscriptions.model.PlanResource;
 import com.ngueno.juno.sdk.resources.subscriptions.model.PlanResources;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResource;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResources;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoSubscriptionServiceTest extends AbstractServiceTest {
+class JunoSubscriptionServiceTest extends AbstractSpringBootTest {
 
     @Test
     void createPlan() {

@@ -16,10 +16,10 @@ import com.ngueno.juno.sdk.resources.payments.model.JunoPaymentCreateRequest;
 import com.ngueno.juno.sdk.resources.payments.model.JunoPaymentRefundRequest;
 import com.ngueno.juno.sdk.resources.payments.model.PaymentResource;
 import com.ngueno.juno.sdk.resources.payments.model.PaymentResources;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 import com.ngueno.juno.sdk.test.FixtureHelper;
 
-class JunoPaymentServiceTest extends AbstractServiceTest {
+class JunoPaymentServiceTest extends AbstractSpringBootTest {
 
     @Test
     void createPayments() {

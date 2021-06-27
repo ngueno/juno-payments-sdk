@@ -1,0 +1,17 @@
+{
+    "transactionId": "3075b373b4efef",
+    "installments": 1,
+    "payments": [
+        {
+            "id": "pay_4F1ED802EC7E5CDA1985C4A892725E94",
+            "chargeId": "chr_B98DF63E28D0A31FE6F0EB29414BE49D",
+            "date": "2021-03-22",
+            "releaseDate": "2021-04-23",
+            "amount": 1000.00,
+            "fee": 38.40,
+            "type": "CREDIT_CARD",
+            "status": "CONFIRMED",
+            "failReason": null
+        }
+    ]
+}

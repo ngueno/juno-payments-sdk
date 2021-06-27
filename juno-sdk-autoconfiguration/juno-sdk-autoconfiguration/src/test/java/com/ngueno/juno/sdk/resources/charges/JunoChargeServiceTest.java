@@ -18,9 +18,9 @@ import com.ngueno.juno.sdk.resources.charges.model.ChargeResources;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeCreateRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeListRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeSplitUpdateRequest;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoChargeServiceTest extends AbstractServiceTest {
+class JunoChargeServiceTest extends AbstractSpringBootTest {
 
     @Test
     void createCharges() {

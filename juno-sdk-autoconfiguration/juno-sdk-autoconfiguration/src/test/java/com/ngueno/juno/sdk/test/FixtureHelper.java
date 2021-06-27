@@ -8,11 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.mockserver.model.MediaType;
-
 import com.ngueno.juno.sdk.resources.base.model.Address;
 import com.ngueno.juno.sdk.resources.base.model.ChargeBilling;
 import com.ngueno.juno.sdk.resources.base.model.CreditCardDetails;
+
+import org.mockserver.model.MediaType;
 
 public class FixtureHelper {
 
@@ -41,9 +41,14 @@ public class FixtureHelper {
     public static final String BEARER_AUTHENTICATION = "Bearer " + BEARER_AUTHENTICATION_ACCESS_TOKEN;
     public static final String BASIC_AUTHENTICATION_ENCODED = "ZHVtbXlDbGllbnRJZDpkdW1teUNsaWVudFNlY3JldA==";
     public static final String BASIC_AUTHENTICATION = "Basic " + BASIC_AUTHENTICATION_ENCODED;
+    public static final String TOKEN_TYPE = "bearer";
+    public static final String SCOPE = "all";
+    public static final String USER_NAME = "mysdk@somerandomemail.com";
+    public static final String JTI = "XPNkRjUk2vAgAZHhdsh9l5pocPkl";
+    public static final int EXPIRES_IN = 86399;
+    public static final Long GENERATED_AT = 1000L;
 
-    public static final MediaType MEDIA_TYPE_FORM_URLENCODED = new MediaType("application",
-            "x-www-form-urlencoded;charset=UTF-8");
+    public static final MediaType MEDIA_TYPE_FORM_URLENCODED = new MediaType("application", "x-www-form-urlencoded;charset=UTF-8");
     public static final MediaType MEDIA_TYPE_JSON = new MediaType("application", "json;charset=UTF-8");
     public static final MediaType MEDIA_TYPE_TEXT_PLAIN = new MediaType("text", "plain;charset=UTF-8");
 

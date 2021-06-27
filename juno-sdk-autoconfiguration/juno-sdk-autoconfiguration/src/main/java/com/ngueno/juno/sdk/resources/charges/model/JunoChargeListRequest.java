@@ -43,14 +43,6 @@ public class JunoChargeListRequest implements JunoBaseRequest {
     private String lastObjectId;
     private String lastValue;
 
-    @Getter
-    @RequiredArgsConstructor
-    public enum JunoChargeListOrder {
-        ID("id"), DUE_DATE("dueDate"), AMOUNT("amount"), PAYMENT_DATE("paymentDate");
-
-        private final String order;
-    }
-
     public Map<String, Object> toQueryParamMap() {
         HashMap<String, Object> queryParams = new HashMap<>();
 

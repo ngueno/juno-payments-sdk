@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import com.ngueno.juno.sdk.resources.creditcards.model.CreditCardTokenizationResource;
 import com.ngueno.juno.sdk.resources.creditcards.model.JunoCreditCardTokenizeRequest;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoCreditCardServiceTest extends AbstractServiceTest {
+class JunoCreditCardServiceTest extends AbstractSpringBootTest {
 
     @Test
     void tokenizeCard() {

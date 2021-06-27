@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.junit.jupiter.api.Test;
 
 import com.ngueno.juno.sdk.resources.balance.model.BalanceResource;
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-class JunoBalanceServiceTest extends AbstractServiceTest {
+class JunoBalanceServiceTest extends AbstractSpringBootTest {
 
     @Test
     void getBalance() {

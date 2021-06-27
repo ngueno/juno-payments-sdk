@@ -6,6 +6,9 @@ import com.ngueno.juno.sdk.resources.base.http.JunoBaseRequest;
 import com.ngueno.juno.sdk.resources.base.model.BankAccount;
 import com.ngueno.juno.sdk.resources.base.model.TransferType;
 
+import lombok.ToString;
+
+@ToString
 public abstract class JunoTransferRequest implements JunoBaseRequest {
 
     protected String name;

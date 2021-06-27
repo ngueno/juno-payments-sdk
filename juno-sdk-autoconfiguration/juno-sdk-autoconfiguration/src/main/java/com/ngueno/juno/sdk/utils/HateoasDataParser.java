@@ -10,13 +10,14 @@ import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 
 import lombok.Getter;
 
-@Getter
 public class HateoasDataParser {
 
     private static final String VALUE_SEPARATOR = "=";
     private static final String PARAMS_SEPARATOR = "&";
 
     private URL url;
+
+    @Getter
     private Map<String, Object> params = new LinkedHashMap<>();
 
     public HateoasDataParser(String hateoasLink) {

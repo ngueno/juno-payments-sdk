@@ -1,0 +1,14 @@
+{
+    "id": "bil_EF68A889FB82438A",
+    "numericalBarCode": "826600000002941601092021104013409685480320219193",
+    "billAmount": 94.16,
+    "dueDate": "2021-04-01",
+    "billType": "UTILITY",
+    "digitalAccountId": "dac_BF7FCE967887DCF4",
+    "paidAmount": 1000.00,
+    "paymentDate": "2021-03-25",
+    "paymentDescription": "Testing payment",
+    "beneficiaryDocument": "74309209009",
+    "status": "SCHEDULED",
+    "createdOn": "2021-03-22 22:18:03"
+}

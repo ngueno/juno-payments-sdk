@@ -6,10 +6,10 @@ import javax.annotation.Resource;
 
 import org.junit.jupiter.api.Test;
 
-import com.ngueno.juno.sdk.test.AbstractServiceTest;
+import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 import com.ngueno.juno.sdk.test.FixtureHelper;
 
-class JunoOAuthServiceTest extends AbstractServiceTest {
+class JunoOAuthServiceTest extends AbstractSpringBootTest {
 
     @Test
     void getAccessToken() {

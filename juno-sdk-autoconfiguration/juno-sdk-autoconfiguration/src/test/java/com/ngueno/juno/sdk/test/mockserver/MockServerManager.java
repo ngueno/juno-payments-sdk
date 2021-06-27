@@ -51,7 +51,7 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         mockServer.when( //
                 request() //
                         .withMethod(POST.name()) //
-                        .withPath("/oauth/token") //
+                        .withPath("/auth-server/oauth/token") //
                         .withBody(StringBody.exact("grant_type=client_credentials")) //
                         .withContentType(FixtureHelper.MEDIA_TYPE_FORM_URLENCODED) //
                         .withHeader(new Header(JunoApiHeaders.AUTHORIZATION, FixtureHelper.BASIC_AUTHENTICATION)) //

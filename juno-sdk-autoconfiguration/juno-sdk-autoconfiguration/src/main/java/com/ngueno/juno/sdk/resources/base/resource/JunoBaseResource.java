@@ -2,14 +2,16 @@ package com.ngueno.juno.sdk.resources.base.resource;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.hateoas.Link;
 import org.springframework.util.Assert;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public abstract class JunoBaseResource {
 
     @JsonProperty("_links")

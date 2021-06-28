@@ -15,14 +15,18 @@ import java.util.function.Consumer;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import com.ngueno.juno.sdk.config.JunoApiHeaders;
 import com.ngueno.juno.sdk.model.environment.JunoEnvironment;
 import com.ngueno.juno.sdk.model.error.JunoApiError;
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.resources.oauth.ProxyJunoOAuthService;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserter;
@@ -126,6 +130,36 @@ public class JunoHttpService {
                 .block(junoEnvironment.getApiv2TimeoutDuration());
     }
 
+    public <T> T upload(String uri, String resourceToken, byte[] file, String fileName, Class<T> responseClass) {
+        MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        builder.part("files", file).filename(fileName);
+        return upload(uri, resourceToken, builder, responseClass);
+    }
+
+    public <T> T upload(String uri, String resourceToken, MultipartBodyBuilder builder, Class<T> responseClass) {
+        return webClient //
+                .post() //
+                .uri(uri) //
+                .headers(configureHeaders(resourceToken)) //
+                .body(BodyInserters.fromMultipartData(builder.build())) //
+                .retrieve() //
+                .onStatus(HttpStatus::isError, this::handleError) //
+                .bodyToMono(responseClass) //
+                .block(junoEnvironment.getApiv2TimeoutDuration());
+    }
+
+    public <T> T uploadEncrypted(String uri, String resourceToken, byte[] encryptedFile, Class<T> responseClass) {
+        return webClient //
+                .post() //
+                .uri(uri) //
+                .headers(configureEncryptedUploadHeaders(resourceToken)) //
+                .body(BodyInserters.fromResource(new ByteArrayResource(encryptedFile))) //
+                .retrieve() //
+                .onStatus(HttpStatus::isError, this::handleError) //
+                .bodyToMono(responseClass) //
+                .block(junoEnvironment.getApiv2TimeoutDuration());
+    }
+
     private Consumer<HttpHeaders> configureHeaders(String resourceToken) {
         return headers -> {
             headers.add(AUTHORIZATION, String.format(BEARER_AUTHENTICATION, proxyJunoOAuthService.getAccessToken()));
@@ -133,6 +167,13 @@ public class JunoHttpService {
                 headers.add(X_RESOURCE_TOKEN, resourceToken);
             }
         };
+    }
+
+    private Consumer<HttpHeaders> configureEncryptedUploadHeaders(String resourceToken) {
+        return configureHeaders(resourceToken).andThen(headers -> {
+            headers.add(JunoApiHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            headers.add(JunoApiHeaders.CONTENT_ENCODING, JunoApiHeaders.CONTENT_ENCODING_GZIP);
+        });
     }
 
     private Mono<? extends Throwable> handleError(ClientResponse clientResponse) {

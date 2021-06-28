@@ -1,0 +1,15 @@
+{
+    "companyTypes": [
+        "MEI",
+        "EI",
+        "EIRELI",
+        "LTDA",
+        "SA",
+        "INSTITUTION_NGO_ASSOCIATION"
+    ],
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/data/company-types"
+        }
+    }
+}

@@ -521,6 +521,30 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
+    public void expectDigitalAccountCreate() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(POST.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "POST.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountUpdate() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(PATCH.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "patch.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
     public void expectDigitalAccountFindCompany() {
         mockServer.when( //
                 getRequestExpectation() //
@@ -540,6 +564,42 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/digital-accounts")) //
                 .respond( //
                         response(getResource("digitalaccounts", "person", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectAdditionalDataBanksList() {
+        mockServer.when( //
+                getRequestExpectationWithoutResourceToken() //
+                        .withMethod(GET.name()) //
+                        .withPath("/data/banks")) //
+                .respond( //
+                        response(getResource("additionaldata", "banks", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectAdditionalDataCompanyTypesList() {
+        mockServer.when( //
+                getRequestExpectationWithoutResourceToken() //
+                        .withMethod(GET.name()) //
+                        .withPath("/data/company-types")) //
+                .respond( //
+                        response(getResource("additionaldata", "companytypes", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectAdditionalDataBusinessAreasList() {
+        mockServer.when( //
+                getRequestExpectationWithoutResourceToken() //
+                        .withMethod(GET.name()) //
+                        .withPath("/data/business-areas")) //
+                .respond( //
+                        response(getResource("additionaldata", "businessareas", "GET.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //

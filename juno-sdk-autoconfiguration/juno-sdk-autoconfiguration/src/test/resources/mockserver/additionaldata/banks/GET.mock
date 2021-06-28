@@ -1,0 +1,19 @@
+{
+    "_embedded": {
+        "banks": [
+            {
+                "number": "001",
+                "name": "BCO DO BRASIL S.A."
+            },
+            {
+                "number": "003",
+                "name": "BCO DA AMAZONIA S.A."
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/data/banks"
+        }
+    }
+}

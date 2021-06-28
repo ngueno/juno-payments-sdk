@@ -1,0 +1,22 @@
+{
+    "_embedded": {
+        "documents": [
+            {
+                "id": "doc_BECCACC6414F9333",
+                "type": "SELFIE",
+                "description": "Selfie",
+                "approvalStatus": "VERIFYING",
+                "_links": {
+                    "self": {
+                        "href": "https://dummy-env/api-integration/documents/doc_BECCACC6414F9333"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/documents"
+        }
+    }
+}

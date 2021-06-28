@@ -6,6 +6,8 @@ public interface JunoApiHeaders {
     String X_RESOURCE_TOKEN = "X-Resource-Token";
     String AUTHORIZATION = "Authorization";
     String CONTENT_TYPE = "Content-Type";
+    String CONTENT_ENCODING = "Content-encoding";
+    String CONTENT_ENCODING_GZIP = "gzip";
     String GRANT_TYPE = "grant_type";
     String CLIENT_CREDENTIALS = "client_credentials";
 

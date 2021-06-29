@@ -1,0 +1,31 @@
+{
+    "_embedded": {
+        "charges": [
+            {
+                "id": "chr_575A9ADE6C14BFD4330B28BA60253850",
+                "code": 136399592,
+                "reference": "REF1",
+                "dueDate": "2021-05-27",
+                "checkoutUrl": "https://dummy-env/checkout/4FA21093ACBF3F9DDC0084987C5208DEB8BCD432C817E8D6",
+                "amount": 1000.0,
+                "status": "ACTIVE",
+                "_links": {
+                    "self": {
+                        "href": "https://dummy-env/api-integration/charges/chr_575A9ADE6C14BFD4330B28BA60253850"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/charges?lastObjectId=chr_F7B72712A8CA92194B6C30E1671C422B&lastValue=chr_F7B72712A8CA92194B6C30E1671C422B&page=2&pageSize=20"
+        },
+        "previous": {
+            "href": "https://dummy-env/api-integration/charges?firstObjectId=chr_F7B72712A8CA92194B6C30E1671C422B&firstValue=chr_F7B72712A8CA92194B6C30E1671C422B&page=1&pageSize=20"
+        },
+        "next": {
+            "href": "https://dummy-env/api-integration/charges?lastObjectId=chr_4F3A23C9D69DE4D916BD249224769F9C&lastValue=chr_4F3A23C9D69DE4D916BD249224769F9C&page=3&pageSize=20"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "balance": 12250.29,
+    "withheldBalance": 1545.62,
+    "transferableBalance": 10704.67,
+    "_links": {
+        "self": {
+            "href": "https://dummy/api-integration/balance"
+        }
+    }
+}

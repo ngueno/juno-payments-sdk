@@ -1,0 +1,30 @@
+{
+    "_embedded": {
+        "webhooks": [
+            {
+                "id": "wbh_8E345951C46BBEED",
+                "url": "https://webhook.site/2a2b472a-5889-4a8c-8562-ebb0f28928df",
+                "secret": "3c4c27504dea9bff7e95a5db8f449c767bce72ab86e0d514e3f7f3e09f44b9fe",
+                "status": "ACTIVE",
+                "eventTypes": [
+                    {
+                        "id": "evt_3891C9EEE7F6CC9A",
+                        "name": "PAYMENT_NOTIFICATION",
+                        "label": "Uma notificação de pagamento foi gerada",
+                        "status": "ENABLED"
+                    }
+                ],
+                "_links": {
+                    "self": {
+                        "href": "https://dummy-env/api-integration/notifications/webhooks/wbh_8E345951C46BBEED"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/notifications/webhooks"
+        }
+    }
+}

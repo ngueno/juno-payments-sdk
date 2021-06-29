@@ -1,0 +1,18 @@
+{
+    "id": "trf_537F7647F48B35F7",
+    "digitalAccountId": "dac_BF7FCE967887DCF4",
+    "creationDate": "2021-04-16 23:49:30",
+    "transferDate": null,
+    "amount": 56.00,
+    "status": "REQUESTED",
+    "recipient": {
+        "name": "Norton Tanner Gueno",
+        "document": "99999999999",
+        "bankAccount": {
+            "bankNumber": "260",
+            "agencyNumber": "0001",
+            "accountNumber": "4698562",
+            "accountType": "CHECKING"
+        }
+    }
+}

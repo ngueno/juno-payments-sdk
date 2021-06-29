@@ -1,0 +1,21 @@
+{
+    "_embedded": {
+        "businessAreas": [
+            {
+                "code": 1000,
+                "activity": "Produtos",
+                "category": "Acessorios automotivos"
+            },
+            {
+                "code": 1001,
+                "activity": "Produtos",
+                "category": "Agronomia e agricultura"
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://dummy-env/api-integration/data/business-areas"
+        }
+    }
+}

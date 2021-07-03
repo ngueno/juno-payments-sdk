@@ -1,9 +1,13 @@
 package com.ngueno.juno.sdk.test.mockserver;
 
+import static com.ngueno.juno.sdk.config.JunoApiHeaders.CONTENT_ENCODING;
+import static com.ngueno.juno.sdk.config.JunoApiHeaders.CONTENT_ENCODING_GZIP;
 import static com.ngueno.juno.sdk.test.FixtureHelper.MEDIA_TYPE_TEXT_PLAIN;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 import static org.mockserver.model.MediaType.APPLICATION_JSON_UTF_8;
+import static org.mockserver.model.MediaType.APPLICATION_OCTET_STREAM;
+import static org.mockserver.model.MediaType.MULTIPART_FORM_DATA;
 import static org.mockserver.model.StringBody.subString;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
@@ -629,4 +633,64 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
+    public void expectDocumentsList() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/documents")) //
+                .respond( //
+                        response(getResource("documents", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDocumentsFind() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/documents")) //
+                .respond( //
+                        response(getResource("documents", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDocumentsGet(String documentId) {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/documents/" + documentId)) //
+                .respond( //
+                        response(getResource("documents", "id", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDocumentsUpload(String documentId) {
+        mockServer.when( //
+                getRequestExpectation(MULTIPART_FORM_DATA) //
+                        .withMethod(POST.name()) //
+                        .withPath("/documents/" + documentId + "/files"))//
+                .respond( //
+                        response(getResource("documents", "id", "POST.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDocumentsUploadUsingEncryption(String documentId) {
+        mockServer.when( //
+                getRequestExpectation(APPLICATION_OCTET_STREAM) //
+                        .withMethod(POST.name()) //
+                        .withHeader(new Header(CONTENT_ENCODING, CONTENT_ENCODING_GZIP)) //
+                        .withPath("/documents/" + documentId + "/files"))//
+                .respond( //
+                        response(getResource("documents", "id", "POST.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
 }

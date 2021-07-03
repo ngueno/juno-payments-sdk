@@ -5,27 +5,35 @@ import static org.mockserver.model.HttpRequest.request;
 
 import java.util.List;
 
-import org.assertj.core.util.Arrays;
-import org.mockserver.model.Header;
-import org.mockserver.model.HttpRequest;
-import org.mockserver.model.MediaType;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ngueno.juno.sdk.config.JunoApiHeaders;
 import com.ngueno.juno.sdk.test.FixtureHelper;
 import com.ngueno.juno.sdk.test.JacksonUtils;
 
+import org.assertj.core.util.Arrays;
+import org.mockserver.model.Header;
+import org.mockserver.model.HttpRequest;
+import org.mockserver.model.MediaType;
+
 public abstract class AbstractExpectationConfigurer {
 
     protected HttpRequest getRequestExpectationWithoutResourceToken() {
+        return getRequestExpectationWithoutResourceToken(MediaType.APPLICATION_JSON);
+    }
+
+    protected HttpRequest getRequestExpectationWithoutResourceToken(MediaType contentType) {
         return request() //
-                .withContentType(MediaType.APPLICATION_JSON) //
+                .withHeader(new Header(JunoApiHeaders.CONTENT_TYPE, contentType.toString() + ".*")) //
                 .withHeader(new Header(JunoApiHeaders.X_API_VERSION, "2")) //
                 .withHeader(new Header(JunoApiHeaders.AUTHORIZATION, FixtureHelper.BEARER_AUTHENTICATION)); //
     }
 
     protected HttpRequest getRequestExpectation() {
-        return getRequestExpectationWithoutResourceToken() //
+        return getRequestExpectation(MediaType.APPLICATION_JSON);
+    }
+
+    protected HttpRequest getRequestExpectation(MediaType contentType) {
+        return getRequestExpectationWithoutResourceToken(contentType) //
                 .withHeader(new Header(JunoApiHeaders.X_RESOURCE_TOKEN, FixtureHelper.RESOURCE_TOKEN)); //
     }
 

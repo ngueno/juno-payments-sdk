@@ -58,7 +58,7 @@ public class JunoDocumentService extends JunoBaseService {
         return internalUploadDocument(resourceToken, documentId, file, true);
     }
 
-    public DocumentResource internalUploadDocument(String resourceToken, String documentId, JunoDocumentFile file, boolean encrypted) {
+    private DocumentResource internalUploadDocument(String resourceToken, String documentId, JunoDocumentFile file, boolean encrypted) {
         InputStream inputStream = null;
 
         try {

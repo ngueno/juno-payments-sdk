@@ -6,8 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
+import com.ngueno.juno.sdk.resources.base.model.CreditCardDetails;
 import com.ngueno.juno.sdk.resources.base.model.PaymentBilling;
 import com.ngueno.juno.sdk.resources.base.model.PaymentStatus;
 import com.ngueno.juno.sdk.resources.base.model.PaymentType;
@@ -19,13 +18,23 @@ import com.ngueno.juno.sdk.resources.payments.model.PaymentResources;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 import com.ngueno.juno.sdk.test.FixtureHelper;
 
+import org.junit.jupiter.api.Test;
+
 class JunoPaymentServiceTest extends AbstractSpringBootTest {
 
     @Test
-    void createPayments() {
+    void createPaymentsUsingCreditCardId() {
+        createPayments(helper().createCreditCardDetailsWithCreditCardId());
+    }
+
+    @Test
+    void createPaymentsUsingHash() {
+        createPayments(helper().createCreditCardDetailsWithCreditCardHash());
+    }
+
+    private void createPayments(CreditCardDetails creditCardDetails) {
         PaymentBilling paymentBilling = new PaymentBilling("dummy@email.com", helper().createAddress());
-        JunoPaymentCreateRequest request = new JunoPaymentCreateRequest(FixtureHelper.CHARGE_ID, paymentBilling,
-                helper().createCreditCardDetails());
+        JunoPaymentCreateRequest request = new JunoPaymentCreateRequest(FixtureHelper.CHARGE_ID, paymentBilling, creditCardDetails);
 
         mockServerManager().expectPaymentCreate(request);
 

@@ -25,7 +25,6 @@ public class FixtureHelper {
     public static final String PHONE = "41999002102";
     public static final String DOCUMENT_CPF = "56489652064";
     public static final String DOCUMENT_CNPJ = "99391775000100";
-    public static final String DAC_ID = "dac_FE92DCAC4561C7CE";
     public static final String NAME = "Stigandr Ebbe";
     public static final String MOTHER_NAME = "Mother of Stigandr Ebbe";
     public static final String DESCRIPTION = "Some random description to be used in any purpose";
@@ -49,12 +48,15 @@ public class FixtureHelper {
     public static final String AMOUNT_STR = "1000.00";
     public static final BigDecimal AMOUNT = new BigDecimal(AMOUNT_STR);
 
+    public static final String DAC_ID = "dac_FE92DCAC4561C7CE";
     public static final String PLAN_ID = "pln_D539CC5AF0E87FB1";
     public static final String SUBSCRIPTION_ID = "sub_EDA3F6CA13DFEC4C";
     public static final String CHARGE_ID = "chr_575A9ADE6C14BFD4330B28BA60253850";
     public static final String PAYMENT_ID = "pay_4F1ED802EC7E5CDA1985C4A892725E94";
+    public static final String DOCUMENT_ID = "doc_BECCACC6414F9333";
 
     public static final String CREDIT_CARD_ID = "a1724bea-b9d7-4ca9-9992-76488af3a006";
+    public static final String CREDIT_CARD_HASH = "49e4f916-faac-4571-970b-f2a3fa1139a0";
 
     public static final String RESOURCE_TOKEN = "dummyResourceToken";
     public static final String BEARER_AUTHENTICATION_ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJub3J0b250Z3Vlbm9AaG90bWFpbC5jb20iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjE2MzY1MjMxLCJqdGkiOiIxcDZ4cVlhdXJxOGYyRmpLbnE5dnhLaUthVDgiLCJjbGllbnRfaWQiOiIyaGZCdXd5UjIxQ1liNUU4In0.ECSOVi1ICvvkw4oV7C3kGVQYRDAsft7u8jJWGqptx8dKqnOEJgUBWl9MB5EjHFWfYmEALFCgmHWYpGgKASDJmk3yJubEg_SaMpxTdsMSdnj3dxvGtXOj3hNi-2CsbPecckya8KjARAFWxLOJxgo813dPHNjSg5cU5JfkjHQaaR5swUap1h_aG9jJ3boRcHl9n_L10DfOlhZcX5NmdtNgpoPhOYRbS7b_Lzromy_kmBVl_d3-sp3zb3Sgio_FbF4A1LDxH44tz2EkiNeBlLRJvD3NzIPY8Uz06e58K1qq8TA6KDp-LY_saQgIrs1ww4GTtAZac1PqQvsHsMbm0JuGZA";
@@ -72,14 +74,19 @@ public class FixtureHelper {
     public static final MediaType MEDIA_TYPE_JSON = new MediaType("application", "json;charset=UTF-8");
     public static final MediaType MEDIA_TYPE_TEXT_PLAIN = new MediaType("text", "plain;charset=UTF-8");
 
+    public static final String EXAMPLE_DOCUMENT_FILENAME = "example_document.pdf";
+
     public static String getResource(String... resources) {
+        return readFromResource(getResourcePath(resources));
+    }
+
+    public static Path getResourcePath(String... resources) {
         Path resourcePath = getBaseResourcePath();
 
         for (String resource : resources) {
             resourcePath = resourcePath.resolve(resource);
         }
-
-        return readFromResource(resourcePath);
+        return resourcePath;
     }
 
     private static Path getBaseResourcePath() {
@@ -95,8 +102,16 @@ public class FixtureHelper {
         return null;
     }
 
-    public CreditCardDetails createCreditCardDetails() {
+    public static Path getMockDocumentPath() {
+        return getResourcePath("etc", EXAMPLE_DOCUMENT_FILENAME);
+    }
+
+    public CreditCardDetails createCreditCardDetailsWithCreditCardId() {
         return CreditCardDetails.withCreditCardId(CREDIT_CARD_ID);
+    }
+
+    public CreditCardDetails createCreditCardDetailsWithCreditCardHash() {
+        return CreditCardDetails.withCreditCardHash(CREDIT_CARD_HASH);
     }
 
     public ChargeBilling createChargeBilling() {

@@ -69,7 +69,7 @@ class JunoSubscriptionServiceTest extends AbstractSpringBootTest {
     @Test
     void createSubscription() {
         JunoSubscriptionCreateRequest request = new JunoSubscriptionCreateRequest(20, PLAN_ID, "dummyDescription",
-                helper().createCreditCardDetails(), helper().createChargeBilling());
+                helper().createCreditCardDetailsWithCreditCardId(), helper().createChargeBilling());
 
         mockServerManager().expectSubscriptionCreate(request);
         SubscriptionResource resource = service.createSubscription(request);

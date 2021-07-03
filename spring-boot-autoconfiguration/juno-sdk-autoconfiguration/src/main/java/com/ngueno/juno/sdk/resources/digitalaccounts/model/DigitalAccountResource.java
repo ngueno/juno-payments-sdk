@@ -24,7 +24,8 @@ public class DigitalAccountResource extends JunoBaseResource {
     private String document;
     @JsonFormat(shape = Shape.STRING, pattern = JunoApiFormats.API_ISO_DATE_TIME_PATTERN)
     private LocalDateTime createdOn;
-    private String accountNumber;
+    private Long accountNumber;
+    private String resourceToken;
 
     public boolean isPerson() {
         return !isCompany();

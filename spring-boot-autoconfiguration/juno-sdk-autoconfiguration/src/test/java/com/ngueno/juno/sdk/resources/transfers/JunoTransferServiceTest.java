@@ -7,14 +7,12 @@ import static com.ngueno.juno.sdk.test.FixtureHelper.AGENCY_NUMBER;
 import static com.ngueno.juno.sdk.test.FixtureHelper.AMOUNT;
 import static com.ngueno.juno.sdk.test.FixtureHelper.BANK_NUMBER;
 import static com.ngueno.juno.sdk.test.FixtureHelper.DAC_ID;
-import static com.ngueno.juno.sdk.test.FixtureHelper.DOCUMENT;
+import static com.ngueno.juno.sdk.test.FixtureHelper.DOCUMENT_CPF;
 import static com.ngueno.juno.sdk.test.FixtureHelper.NAME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.annotation.Resource;
-
-import org.junit.jupiter.api.Test;
 
 import com.ngueno.juno.sdk.resources.base.model.BankAccount;
 import com.ngueno.juno.sdk.resources.base.model.Recipient;
@@ -26,14 +24,15 @@ import com.ngueno.juno.sdk.resources.transfers.model.JunoPixTransferRequest;
 import com.ngueno.juno.sdk.resources.transfers.model.TransferResource;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
+import org.junit.jupiter.api.Test;
+
 class JunoTransferServiceTest extends AbstractSpringBootTest {
 
     @Test
     void createP2pTransfer() {
         mockServerManager().expectP2pTransfer();
 
-        JunoP2pTransferRequest request = new JunoP2pTransferRequest(NAME, DOCUMENT, AMOUNT,
-                BankAccount.forP2pTransfer(DAC_ID));
+        JunoP2pTransferRequest request = new JunoP2pTransferRequest(NAME, DOCUMENT_CPF, AMOUNT, BankAccount.forP2pTransfer(DAC_ID));
 
         TransferResource resource = service.createTransfer(request);
 
@@ -58,39 +57,12 @@ class JunoTransferServiceTest extends AbstractSpringBootTest {
     }
 
     @Test
-    void createDefaultBankAccountTransfer() {
-        mockServerManager().expectDefaultBankAccountTransfer();
-
-        JunoDefaultBankAccountTransferRequest request = new JunoDefaultBankAccountTransferRequest(AMOUNT);
-        TransferResource resource = service.createTransfer(request);
-
-        assertEquals("trf_AACAA6C85789FED2", resource.getId());
-        assertEquals("dac_BF7FCE967887DCF4", resource.getDigitalAccountId());
-        assertEquals(parseDateTime("2021-04-17 00:00:32"), resource.getCreationDate());
-        assertBigDecimal("100.00", resource.getAmount());
-        assertEquals(TransferStatus.REQUESTED, resource.getStatus());
-        assertNull(resource.getTransferDate());
-
-        Recipient recipient = resource.getRecipient();
-        assertEquals("Norton Tanner Gueno", recipient.getName());
-        assertEquals("99999999999", recipient.getDocument());
-
-        BankAccount bankAccount = recipient.getBankAccount();
-        assertEquals("4698562", bankAccount.getAccountNumber());
-        assertEquals("260", bankAccount.getBankNumber());
-        assertEquals(CHECKING, bankAccount.getAccountType());
-        assertEquals("0001", bankAccount.getAgencyNumber());
-        assertNull(bankAccount.getAccountComplementNumber());
-        assertNull(bankAccount.getIspb());
-    }
-
-    @Test
     void createBankAccountTransfer() {
         mockServerManager().expectBankAccountTransfer();
 
-        JunoBankAccountTransferRequest request = new JunoBankAccountTransferRequest(NAME, DOCUMENT, AMOUNT,
-                BankAccount.forBankAccountTranfer(BANK_NUMBER, AGENCY_NUMBER, ACCOUNT_NUMBER, ACCOUNT_NUMBER_COMPLEMENT,
-                        CHECKING));
+        JunoBankAccountTransferRequest request = new JunoBankAccountTransferRequest(NAME, DOCUMENT_CPF, AMOUNT,
+                BankAccount.forBankAccountTranfer(BANK_NUMBER, AGENCY_NUMBER, ACCOUNT_NUMBER, ACCOUNT_NUMBER_COMPLEMENT, CHECKING));
+
         TransferResource resource = service.createTransfer(request);
 
         assertEquals("trf_537F7647F48B35F7", resource.getId());
@@ -117,8 +89,9 @@ class JunoTransferServiceTest extends AbstractSpringBootTest {
     void createPixTransfer() {
         mockServerManager().expectPixTransfer();
 
-        JunoPixTransferRequest request = new JunoPixTransferRequest(NAME, DOCUMENT, AMOUNT,
-                BankAccount.forPixTransfer(AGENCY_NUMBER, BANK_NUMBER, DAC_ID, DOCUMENT, NAME, CHECKING));
+        JunoPixTransferRequest request = new JunoPixTransferRequest(NAME, DOCUMENT_CPF, AMOUNT,
+                BankAccount.forPixTransfer(AGENCY_NUMBER, BANK_NUMBER, DAC_ID, DOCUMENT_CPF, NAME, CHECKING));
+
         TransferResource resource = service.createTransfer(request);
 
         assertEquals("pix_D67A21E89B8B00F9", resource.getId());
@@ -139,6 +112,47 @@ class JunoTransferServiceTest extends AbstractSpringBootTest {
         assertEquals("6525", bankAccount.getAgencyNumber());
         assertEquals("0", bankAccount.getIspb());
         assertNull(bankAccount.getAccountComplementNumber());
+    }
+
+    @Test
+    void createDefaultBankAccountTransfer() {
+        mockServerManager().expectDefaultBankAccountTransfer();
+
+        JunoDefaultBankAccountTransferRequest request = new JunoDefaultBankAccountTransferRequest(AMOUNT);
+
+        internalCreateDefaultBankAccountTransfer(request);
+    }
+
+    @Test
+    void createDefaultBankAccountTransferTotalAmount() {
+        mockServerManager().expectDefaultBankAccountTransfer();
+
+        JunoDefaultBankAccountTransferRequest request = new JunoDefaultBankAccountTransferRequest();
+
+        internalCreateDefaultBankAccountTransfer(request);
+    }
+
+    private void internalCreateDefaultBankAccountTransfer(JunoDefaultBankAccountTransferRequest request) {
+        TransferResource resource = service.createTransfer(request);
+
+        assertEquals("trf_AACAA6C85789FED2", resource.getId());
+        assertEquals("dac_BF7FCE967887DCF4", resource.getDigitalAccountId());
+        assertEquals(parseDateTime("2021-04-17 00:00:32"), resource.getCreationDate());
+        assertBigDecimal("100.00", resource.getAmount());
+        assertEquals(TransferStatus.REQUESTED, resource.getStatus());
+        assertNull(resource.getTransferDate());
+
+        Recipient recipient = resource.getRecipient();
+        assertEquals("Norton Tanner Gueno", recipient.getName());
+        assertEquals("99999999999", recipient.getDocument());
+
+        BankAccount bankAccount = recipient.getBankAccount();
+        assertEquals("4698562", bankAccount.getAccountNumber());
+        assertEquals("260", bankAccount.getBankNumber());
+        assertEquals(CHECKING, bankAccount.getAccountType());
+        assertEquals("0001", bankAccount.getAgencyNumber());
+        assertNull(bankAccount.getAccountComplementNumber());
+        assertNull(bankAccount.getIspb());
     }
 
     @Resource

@@ -1,8 +1,5 @@
 package com.ngueno.juno.sdk.resources.base.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BankAccount {
+public class BankAccount extends JunoBaseModel {
 
     private String bankNumber;
     private String agencyNumber;
@@ -23,10 +20,9 @@ public class BankAccount {
 
     private String ispb;
 
-    @JsonInclude(value = Include.NON_NULL)
     private BankAccountHolder accountHolder;
 
-    public static BankAccount forDigitalAccountCreation(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber,
+    public static BankAccount forDigitalAccountCreationOrUpdate(String bankNumber, String agencyNumber, String accountNumber, String accountComplementNumber,
             BankAccountType accountType, BankAccountHolder accountHolder) {
         return new BankAccount(bankNumber, agencyNumber, accountNumber, accountComplementNumber, accountType, accountHolder);
     }

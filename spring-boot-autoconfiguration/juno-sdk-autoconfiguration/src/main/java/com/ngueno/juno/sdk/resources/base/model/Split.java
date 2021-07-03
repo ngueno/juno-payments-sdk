@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Split {
+public class Split extends JunoBaseModel {
 
     private String recipientToken;
     private BigDecimal amount;

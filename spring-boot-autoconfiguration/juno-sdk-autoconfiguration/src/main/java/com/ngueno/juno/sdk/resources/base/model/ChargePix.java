@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChargePix {
+public class ChargePix extends JunoBaseModel {
 
     private String id;
     private String qrcodeInBase64;

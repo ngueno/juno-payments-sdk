@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Charge {
+public class Charge extends JunoBaseModel {
 
     private final String description;
     private String pixKey;

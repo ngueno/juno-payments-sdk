@@ -1,4 +1,4 @@
-package com.ngueno.juno.sdk.resources.credentials;
+package com.ngueno.juno.sdk.resources.credentials.model;
 
 import java.security.KeyFactory;
 import java.security.PublicKey;

@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Address {
+public class Address extends JunoBaseModel {
 
     private final String street;
     private final String number;

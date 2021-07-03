@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class PaymentBilling {
+public class PaymentBilling extends JunoBaseModel {
 
     private final String email;
     private final Address address;

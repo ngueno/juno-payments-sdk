@@ -1,5 +1,6 @@
 package com.ngueno.juno.sdk.test;
 
+import static com.ngueno.juno.sdk.resources.base.model.LegalRepresentativeType.INDIVIDUAL;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
@@ -7,24 +8,43 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 
 import com.ngueno.juno.sdk.resources.base.model.Address;
+import com.ngueno.juno.sdk.resources.base.model.BankAccountHolder;
 import com.ngueno.juno.sdk.resources.base.model.ChargeBilling;
+import com.ngueno.juno.sdk.resources.base.model.CompanyMember;
 import com.ngueno.juno.sdk.resources.base.model.CreditCardDetails;
+import com.ngueno.juno.sdk.resources.base.model.LegalRepresentative;
 
 import org.mockserver.model.MediaType;
 
 public class FixtureHelper {
 
-    public static final String EMAIL = "dummyEmail";
-    public static final String DOCUMENT = "56489652064";
+    public static final String EMAIL = "mysdk@developer.com.br";
+    public static final String PHONE = "41999002102";
+    public static final String DOCUMENT_CPF = "56489652064";
+    public static final String DOCUMENT_CNPJ = "99391775000100";
     public static final String DAC_ID = "dac_FE92DCAC4561C7CE";
     public static final String NAME = "Stigandr Ebbe";
+    public static final String MOTHER_NAME = "Mother of Stigandr Ebbe";
     public static final String DESCRIPTION = "Some random description to be used in any purpose";
     public static final String AGENCY_NUMBER = "5496";
-    public static final String ACCOUNT_NUMBER = "10000016";
+    public static final String ACCOUNT_NUMBER = "100000016";
     public static final String BANK_NUMBER = "033";
     public static final String ACCOUNT_NUMBER_COMPLEMENT = "01";
+    public static final String LINE_OF_BUSINESS = "Random line of business";
+    public static final String CNAE = "6204000";
+    public static final Long BUSINESS_AREA_ID = 1024L;
+    public static final LocalDate BIRTH_DATE = LocalDate.of(1994, 9, 6);
+    public static final LocalDate ESTABLISHMENT_DATE = LocalDate.of(2020, 9, 6);
+    public static final BigDecimal MONTHLY_INCOME_OR_REVENUE = new BigDecimal("50000.00");
+
+    public static final String STREET = "Av. Sete de Setembro";
+    public static final String ADDRESS_NUMBER = "1075";
+    public static final String CITY = "Curitiba";
+    public static final String STATE = "PR";
+    public static final String ZIP_CODE = "80730390";
 
     public static final String AMOUNT_STR = "1000.00";
     public static final BigDecimal AMOUNT = new BigDecimal(AMOUNT_STR);
@@ -80,10 +100,22 @@ public class FixtureHelper {
     }
 
     public ChargeBilling createChargeBilling() {
-        return new ChargeBilling(NAME, DOCUMENT, EMAIL, createAddress());
+        return new ChargeBilling(NAME, DOCUMENT_CPF, EMAIL, createAddress());
     }
 
     public Address createAddress() {
-        return new Address("dummyStreet", "dummyNumber", "dummyCity", "dummyState", "dummyPostCode");
+        return new Address(STREET, ADDRESS_NUMBER, CITY, STATE, ZIP_CODE);
+    }
+
+    public LegalRepresentative createLegalRepresentative() {
+        return new LegalRepresentative(NAME, DOCUMENT_CPF, BIRTH_DATE, MOTHER_NAME, INDIVIDUAL);
+    }
+
+    public BankAccountHolder createBankAccountHolder() {
+        return new BankAccountHolder(NAME, DOCUMENT_CPF);
+    }
+
+    public CompanyMember createCompanyMember() {
+        return new CompanyMember(NAME, DOCUMENT_CPF, BIRTH_DATE);
     }
 }

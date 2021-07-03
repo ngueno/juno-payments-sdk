@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Payment {
+public class Payment extends JunoBaseModel {
 
     private String id;
     private String chargeId;

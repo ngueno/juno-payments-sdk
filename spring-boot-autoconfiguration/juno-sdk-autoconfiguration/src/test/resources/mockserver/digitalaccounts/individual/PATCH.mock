@@ -2,8 +2,8 @@
     "id": "dac_A5BD5878FE083527",
     "type": "PAYMENT",
     "status": "AWAITING_DOCUMENTS",
-    "personType": "J",
-    "document": "99391775000100",
+    "personType": "F",
+    "document": "56489652064",
     "createdOn": "2021-07-02T23:26:37.648-03:00",
     "accountNumber": 10000284677,
     "_links": {

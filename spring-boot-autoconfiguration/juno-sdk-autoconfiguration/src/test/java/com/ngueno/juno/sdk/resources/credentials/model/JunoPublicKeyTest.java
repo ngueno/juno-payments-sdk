@@ -1,4 +1,4 @@
-package com.ngueno.juno.sdk.resources.credentials;
+package com.ngueno.juno.sdk.resources.credentials.model;
 
 import static com.ngueno.juno.sdk.test.FixtureHelper.getResource;
 import static org.junit.jupiter.api.Assertions.assertEquals;

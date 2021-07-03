@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChargeBilletDetails {
+public class ChargeBilletDetails extends JunoBaseModel {
 
     private String bankAccount;
     private String ourNumber;

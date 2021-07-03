@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter(value = AccessLevel.PRIVATE)
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CreditCardDetails {
+public class CreditCardDetails extends JunoBaseModel {
 
     private String creditCardId;
     private String creditCardHash;

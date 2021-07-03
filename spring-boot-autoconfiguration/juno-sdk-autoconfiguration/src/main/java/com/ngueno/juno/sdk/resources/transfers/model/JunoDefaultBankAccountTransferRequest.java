@@ -9,6 +9,13 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class JunoDefaultBankAccountTransferRequest extends JunoTransferRequest {
 
+    /**
+     * Transfer total balance option :)
+     */
+    public JunoDefaultBankAccountTransferRequest() {
+        this(null);
+    }
+
     public JunoDefaultBankAccountTransferRequest(BigDecimal amount) {
         super(amount);
     }

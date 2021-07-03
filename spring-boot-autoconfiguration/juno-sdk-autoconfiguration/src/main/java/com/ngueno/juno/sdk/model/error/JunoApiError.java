@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class JunoApiError implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -17,6 +19,7 @@ public class JunoApiError implements Serializable {
     private String path;
 
     @Getter
+    @ToString
     public static class ErrorDetail implements Serializable {
 
         private static final long serialVersionUID = 1L;

@@ -177,7 +177,7 @@ public class JunoHttpService {
     }
 
     private Mono<? extends Throwable> handleError(ClientResponse clientResponse) {
-        return Mono.just(new JunoApiIntegrationException(clientResponse.bodyToMono(JunoApiError.class).block()));
+        return clientResponse.bodyToMono(JunoApiError.class).flatMap(apiError -> Mono.error(new JunoApiIntegrationException(apiError)));
     }
 
     private BodyInserter<?, ? super ClientHttpRequest> toBody(JunoBaseRequest request) {

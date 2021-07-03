@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Recipient {
+public class Recipient extends JunoBaseModel {
 
     private String name;
     private String document;

@@ -521,25 +521,61 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectDigitalAccountCreate() {
+    public void expectDigitalAccountCreateIndividual() {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(POST.name()) //
                         .withPath("/digital-accounts")) //
                 .respond( //
-                        response(getResource("digitalaccounts", "POST.mock")) //
+                        response(getResource("digitalaccounts", "individual", "POST.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
     }
 
-    public void expectDigitalAccountUpdate() {
+    public void expectDigitalAccountUpdateIndividual() {
         mockServer.when( //
                 getRequestExpectation() //
                         .withMethod(PATCH.name()) //
                         .withPath("/digital-accounts")) //
                 .respond( //
-                        response(getResource("digitalaccounts", "patch.mock")) //
+                        response(getResource("digitalaccounts", "individual", "PATCH.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountFindIndividual() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(GET.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "individual", "GET.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountCreateCompany() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(POST.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "company", "POST.mock")) //
+                                .withContentType(APPLICATION_JSON_UTF_8) //
+                                .withStatusCode(200) //
+                ); //
+    }
+
+    public void expectDigitalAccountUpdateCompany() {
+        mockServer.when( //
+                getRequestExpectation() //
+                        .withMethod(PATCH.name()) //
+                        .withPath("/digital-accounts")) //
+                .respond( //
+                        response(getResource("digitalaccounts", "company", "PATCH.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //
@@ -552,18 +588,6 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                         .withPath("/digital-accounts")) //
                 .respond( //
                         response(getResource("digitalaccounts", "company", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON_UTF_8) //
-                                .withStatusCode(200) //
-                ); //
-    }
-
-    public void expectDigitalAccountFindPerson() {
-        mockServer.when( //
-                getRequestExpectation() //
-                        .withMethod(GET.name()) //
-                        .withPath("/digital-accounts")) //
-                .respond( //
-                        response(getResource("digitalaccounts", "person", "GET.mock")) //
                                 .withContentType(APPLICATION_JSON_UTF_8) //
                                 .withStatusCode(200) //
                 ); //

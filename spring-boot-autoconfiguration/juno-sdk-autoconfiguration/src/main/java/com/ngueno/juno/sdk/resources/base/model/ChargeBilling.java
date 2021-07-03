@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class ChargeBilling {
+public class ChargeBilling extends JunoBaseModel {
 
     private final String name;
     private final String document;

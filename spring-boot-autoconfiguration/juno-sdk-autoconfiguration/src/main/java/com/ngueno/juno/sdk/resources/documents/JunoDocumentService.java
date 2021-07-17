@@ -66,7 +66,7 @@ public class JunoDocumentService extends JunoBaseService {
             if (encrypted) {
                 return internalUploadEncrypted(resourceToken, documentId, file, inputStream);
             }
-            return internalUpload(resourceToken, documentId, file, inputStream);
+            return internalUpload(resourceToken, documentId, inputStream);
         } catch (IOException e) {
             throw new JunoApiIntegrationException("Failure during file upload, unable to read given file", e);
         } finally {
@@ -74,9 +74,8 @@ public class JunoDocumentService extends JunoBaseService {
         }
     }
 
-    private DocumentResource internalUpload(String resourceToken, String documentId, JunoDocumentFile file, InputStream inputStream)
-            throws IOException {
-        return http().upload(expandId(DOCUMENTS_ID_UPLOAD, documentId), resourceToken, read(inputStream), file.getFileName(), DocumentResource.class);
+    private DocumentResource internalUpload(String resourceToken, String documentId, InputStream inputStream) throws IOException {
+        return http().upload(expandId(DOCUMENTS_ID_UPLOAD, documentId), resourceToken, read(inputStream), DocumentResource.class);
     }
 
     private DocumentResource internalUploadEncrypted(String resourceToken, String documentId, JunoDocumentFile file, InputStream inputStream) {

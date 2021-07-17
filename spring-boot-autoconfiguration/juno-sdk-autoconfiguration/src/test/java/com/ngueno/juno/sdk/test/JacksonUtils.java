@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ngueno.juno.sdk.config.JunoObjectMapperConfig;
 
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -30,9 +28,7 @@ public final class JacksonUtils {
     }
 
     private static void configureObjectMapper() {
-        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        config.objectMapperCustomizer().customize(builder);
-        objectMapper = builder.build();
+        objectMapper = config.junoObjectMapper(config.junoObjectMapperCustomizer());
     }
 
     private static JunoObjectMapperConfig config = new JunoObjectMapperConfig();

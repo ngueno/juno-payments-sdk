@@ -17,13 +17,13 @@ class JunoObjectMapperConfigTest extends AbstractSpringBootTest {
 
     @Test
     void customizer() {
-        assertNotNull(config.objectMapperCustomizer());
+        assertNotNull(config.junoObjectMapperCustomizer());
     }
 
     @Test
     void objectMapper() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        config.objectMapperCustomizer().customize(builder);
+        config.junoObjectMapperCustomizer().customize(builder);
         ObjectMapper objectMapper = builder.build();
         assertFalse(objectMapper.isEnabled(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES));
         assertFalse(objectMapper.isEnabled(SerializationFeature.FAIL_ON_EMPTY_BEANS));

@@ -11,7 +11,8 @@ import org.springframework.core.Ordered;
         JunoSdkScanConfig.class, //
         JunoObjectMapperConfig.class, //
         JunoCredentialsConfig.class, //
-        JunoEnvironmentConfig.class //
+        JunoEnvironmentConfig.class, //
+        JunoHttpConfig.class //
 }) //
 public class JunoSdkConfig {
     // Base class for other configurations :)

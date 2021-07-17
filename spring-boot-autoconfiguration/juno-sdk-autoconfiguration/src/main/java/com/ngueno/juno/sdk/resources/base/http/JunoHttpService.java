@@ -1,18 +1,13 @@
 package com.ngueno.juno.sdk.resources.base.http;
 
-import static com.ngueno.juno.sdk.config.JunoApiHeaders.API_VERSION;
 import static com.ngueno.juno.sdk.config.JunoApiHeaders.AUTHORIZATION;
 import static com.ngueno.juno.sdk.config.JunoApiHeaders.BEARER_AUTHENTICATION;
-import static com.ngueno.juno.sdk.config.JunoApiHeaders.CONTENT_TYPE;
-import static com.ngueno.juno.sdk.config.JunoApiHeaders.X_API_VERSION;
 import static com.ngueno.juno.sdk.config.JunoApiHeaders.X_RESOURCE_TOKEN;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import com.ngueno.juno.sdk.config.JunoApiHeaders;
@@ -22,13 +17,15 @@ import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.resources.oauth.ProxyJunoOAuthService;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ClientResponse;
@@ -38,16 +35,6 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class JunoHttpService {
-
-    @PostConstruct
-    public void configure() {
-        webClient = WebClient //
-                .builder() //
-                .baseUrl(junoEnvironment.getApiv2Endpoint()) //
-                .defaultHeader(X_API_VERSION, API_VERSION) //
-                .defaultHeader(CONTENT_TYPE, APPLICATION_JSON_VALUE) //
-                .build();
-    }
 
     public <T> T get(String uri, Class<T> responseClass) {
         return get(uri, null, responseClass);
@@ -68,7 +55,7 @@ public class JunoHttpService {
                             .forEach(entry -> uriBuilder.queryParam(entry.getKey(), entry.getValue())); //
                     return uriBuilder.build();
                 }) //
-                .headers(configureHeaders(resourceToken)) //
+                .headers(getHeadersTemplate(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
                 .bodyToMono(responseClass) //
@@ -84,7 +71,7 @@ public class JunoHttpService {
                 .post() //
                 .uri(uri) //
                 .body(toBody(request)) //
-                .headers(configureHeaders(resourceToken)) //
+                .headers(getHeadersTemplate(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
                 .bodyToMono(responseClass) //
@@ -100,7 +87,7 @@ public class JunoHttpService {
                 .put() //
                 .uri(uri) //
                 .body(toBody(request)) //
-                .headers(configureHeaders(resourceToken)) //
+                .headers(getHeadersTemplate(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
                 .bodyToMono(responseClass) //
@@ -112,7 +99,7 @@ public class JunoHttpService {
                 .patch() //
                 .uri(uri) //
                 .body(BodyInserters.fromValue(request)) //
-                .headers(configureHeaders(resourceToken)) //
+                .headers(getHeadersTemplate(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
                 .bodyToMono(responseClass) //
@@ -123,44 +110,31 @@ public class JunoHttpService {
         return webClient //
                 .delete() //
                 .uri(uri) //
-                .headers(configureHeaders(resourceToken)) //
+                .headers(getHeadersTemplate(resourceToken)) //
                 .retrieve() //
                 .onStatus(HttpStatus::isError, this::handleError) //
                 .bodyToMono(responseClass) //
                 .block(junoEnvironment.getApiv2TimeoutDuration());
     }
 
-    public <T> T upload(String uri, String resourceToken, byte[] file, String fileName, Class<T> responseClass) {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        builder.part("files", file).filename(fileName);
-        return upload(uri, resourceToken, builder, responseClass);
-    }
+    public <T> T upload(String uri, String resourceToken, byte[] file, Class<T> responseClass) {
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("files", file);
 
-    public <T> T upload(String uri, String resourceToken, MultipartBodyBuilder builder, Class<T> responseClass) {
-        return webClient //
-                .post() //
-                .uri(uri) //
-                .headers(configureHeaders(resourceToken)) //
-                .body(BodyInserters.fromMultipartData(builder.build())) //
-                .retrieve() //
-                .onStatus(HttpStatus::isError, this::handleError) //
-                .bodyToMono(responseClass) //
-                .block(junoEnvironment.getApiv2TimeoutDuration());
+        HttpHeaders headers = new HttpHeaders();
+        getHeadersTemplateForUpload(resourceToken).accept(headers);
+
+        return uploadClient.postForEntity(uri, new HttpEntity<>(body, headers), responseClass).getBody();
     }
 
     public <T> T uploadEncrypted(String uri, String resourceToken, byte[] encryptedFile, Class<T> responseClass) {
-        return webClient //
-                .post() //
-                .uri(uri) //
-                .headers(configureEncryptedUploadHeaders(resourceToken)) //
-                .body(BodyInserters.fromResource(new ByteArrayResource(encryptedFile))) //
-                .retrieve() //
-                .onStatus(HttpStatus::isError, this::handleError) //
-                .bodyToMono(responseClass) //
-                .block(junoEnvironment.getApiv2TimeoutDuration());
+        HttpHeaders headers = new HttpHeaders();
+        getHeadersTemplateForEncryptedUpload(resourceToken).accept(headers);
+
+        return uploadClient.postForEntity(uri, new HttpEntity<>(encryptedFile, headers), responseClass).getBody();
     }
 
-    private Consumer<HttpHeaders> configureHeaders(String resourceToken) {
+    private Consumer<HttpHeaders> getHeadersTemplate(String resourceToken) {
         return headers -> {
             headers.add(AUTHORIZATION, String.format(BEARER_AUTHENTICATION, proxyJunoOAuthService.getAccessToken()));
             if (StringUtils.isNotBlank(resourceToken)) {
@@ -169,10 +143,16 @@ public class JunoHttpService {
         };
     }
 
-    private Consumer<HttpHeaders> configureEncryptedUploadHeaders(String resourceToken) {
-        return configureHeaders(resourceToken).andThen(headers -> {
-            headers.add(JunoApiHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
+    private Consumer<HttpHeaders> getHeadersTemplateForUpload(String resourceToken) {
+        return getHeadersTemplate(resourceToken).andThen(headers -> {
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        });
+    }
+
+    private Consumer<HttpHeaders> getHeadersTemplateForEncryptedUpload(String resourceToken) {
+        return getHeadersTemplate(resourceToken).andThen(headers -> {
             headers.add(JunoApiHeaders.CONTENT_ENCODING, JunoApiHeaders.CONTENT_ENCODING_GZIP);
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         });
     }
 
@@ -184,7 +164,11 @@ public class JunoHttpService {
         return request != null ? BodyInserters.fromValue(request) : null;
     }
 
+    @Resource
     private WebClient webClient;
+
+    @Resource
+    private RestTemplate uploadClient;
 
     @Resource
     private JunoEnvironment junoEnvironment;

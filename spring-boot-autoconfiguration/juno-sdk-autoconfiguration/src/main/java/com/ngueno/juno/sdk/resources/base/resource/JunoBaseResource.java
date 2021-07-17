@@ -2,9 +2,10 @@ package com.ngueno.juno.sdk.resources.base.resource;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.springframework.hateoas.Link;
 import org.springframework.util.Assert;
 
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
+@JsonInclude(value = Include.NON_NULL)
 public abstract class JunoBaseResource {
 
     @JsonProperty("_links")

@@ -25,7 +25,14 @@ public class JunoEventHandlerService {
 
     @PostConstruct
     public void configure() {
+        log.info("[JUNO-SDK] Configuring webhook event handlers");
         eventHandlersMap = eventHandlers.stream().collect(Collectors.toMap(JunoEventHandler::getEventType, Function.identity()));
+        logConfiguredEventHandlers();
+        log.info("[JUNO-SDK] Webhook event handlers configuration finished");
+    }
+
+    private void logConfiguredEventHandlers() {
+        eventHandlersMap.forEach((eventType, handler) -> log.info("[JUNO-SDK] Event Handler/Event Type: {}/{}", handler.getClass(), eventType));
     }
 
     public void handle(String event) {

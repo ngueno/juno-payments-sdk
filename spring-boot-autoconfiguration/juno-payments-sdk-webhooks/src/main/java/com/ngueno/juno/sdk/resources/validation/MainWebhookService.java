@@ -19,6 +19,6 @@ public class MainWebhookService implements WebhookService {
         return mainWebhookSecret;
     }
 
-    @Value("${juno.webhooks-main.webhook-service.secret}")
+    @Value("${juno.webhooks.main-webhook-service.secret}")
     private String mainWebhookSecret;
 }

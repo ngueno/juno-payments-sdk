@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 import com.ngueno.juno.sdk.test.FixtureHelper;
+
+import org.junit.jupiter.api.Test;
 
 class JunoOAuthServiceTest extends AbstractSpringBootTest {
 

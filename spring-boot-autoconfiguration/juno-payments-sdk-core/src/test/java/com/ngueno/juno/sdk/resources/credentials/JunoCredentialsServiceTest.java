@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.resources.credentials.model.JunoPublicKey;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoCredentialsServiceTest extends AbstractSpringBootTest {
 

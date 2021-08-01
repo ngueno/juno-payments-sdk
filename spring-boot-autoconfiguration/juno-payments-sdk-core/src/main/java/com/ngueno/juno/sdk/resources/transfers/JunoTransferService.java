@@ -1,10 +1,10 @@
 package com.ngueno.juno.sdk.resources.transfers;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.transfers.model.JunoTransferRequest;
 import com.ngueno.juno.sdk.resources.transfers.model.TransferResource;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoTransferService extends JunoBaseService {

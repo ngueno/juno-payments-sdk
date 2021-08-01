@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.resources.base.model.PlanFrequency;
 import com.ngueno.juno.sdk.resources.base.model.PlanStatus;
 import com.ngueno.juno.sdk.resources.base.model.SubscriptionStatus;
@@ -20,6 +18,8 @@ import com.ngueno.juno.sdk.resources.subscriptions.model.PlanResources;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResource;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResources;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoSubscriptionServiceTest extends AbstractSpringBootTest {
 

@@ -9,12 +9,12 @@ import static com.ngueno.juno.sdk.test.FixtureHelper.USER_NAME;
 import static com.ngueno.juno.sdk.test.FixtureHelper.getResource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.ngueno.juno.sdk.test.AbstractTest;
+import com.ngueno.juno.sdk.test.AbstractCoreTest;
 import com.ngueno.juno.sdk.test.JacksonUtils;
 
 import org.junit.jupiter.api.Test;
 
-class JunoOAuthResourceTest extends AbstractTest {
+class JunoOAuthResourceTest extends AbstractCoreTest {
 
     @Test
     void constructors() {

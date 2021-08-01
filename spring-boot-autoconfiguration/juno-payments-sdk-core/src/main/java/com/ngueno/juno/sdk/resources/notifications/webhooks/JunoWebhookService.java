@@ -1,7 +1,5 @@
 package com.ngueno.juno.sdk.resources.notifications.webhooks;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.notifications.model.WebhookResource;
 import com.ngueno.juno.sdk.resources.notifications.model.WebhookResources;
@@ -9,6 +7,8 @@ import com.ngueno.juno.sdk.resources.notifications.webhooks.model.JunoWebhookCre
 import com.ngueno.juno.sdk.resources.notifications.webhooks.model.JunoWebhookFindRequest;
 import com.ngueno.juno.sdk.resources.notifications.webhooks.model.JunoWebhookRemoveRequest;
 import com.ngueno.juno.sdk.resources.notifications.webhooks.model.JunoWebhookUpdateRequest;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoWebhookService extends JunoBaseService {

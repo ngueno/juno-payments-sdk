@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.resources.balance.model.BalanceResource;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoBalanceServiceTest extends AbstractSpringBootTest {
 

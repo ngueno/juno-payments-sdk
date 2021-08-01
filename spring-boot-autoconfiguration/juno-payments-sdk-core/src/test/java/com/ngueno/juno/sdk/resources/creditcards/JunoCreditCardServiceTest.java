@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.resources.creditcards.model.CreditCardTokenizationResource;
 import com.ngueno.juno.sdk.resources.creditcards.model.JunoCreditCardTokenizationRequest;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoCreditCardServiceTest extends AbstractSpringBootTest {
 

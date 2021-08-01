@@ -12,19 +12,19 @@
 	<packaging>pom</packaging>
 
 	<properties>
-        <!-- Project -->		
+		<!-- Project -->
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Plugins -->		
+		<!-- Plugins -->
 		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-		<argLine>-Xverify:none -Xms1024m -Xmx2048m -XX:MaxPermSize=1024m</argLine>
+		<argLine>-Xverify:none -Xms1024m -Xmx2048m</argLine>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-    	<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-		
-		<!-- Dependencies  -->
+
+		<!-- Dependencies -->
 		<spring-boot.version>2.5.2</spring-boot.version>
 		<junit.version>5.8.0-M1</junit.version>
 		<lombok.version>1.18.20</lombok.version>
@@ -32,10 +32,13 @@
 		<commons-lang3.version>3.12.0</commons-lang3.version>
 		<commons-io.version>2.10.0</commons-io.version>
 		<commons-collection4.version>4.4</commons-collection4.version>
+		<google-guava.version>30.1.1-jre</google-guava.version>
 		<jose4j.version>0.7.8</jose4j.version>
+		<servlet-api.version>4.0.1</servlet-api.version>
 	</properties>
 
 	<modules>
+		<module>../juno-payments-sdk-base</module>
 		<module>../juno-payments-sdk-core</module>
 		<module>../juno-payments-sdk-webhooks</module>
 		<module>../juno-payments-sdk-starter</module>
@@ -46,6 +49,11 @@
 		<dependencies>
 
 			<!-- Modules -->
+			<dependency>
+				<groupId>com.ngueno</groupId>
+				<artifactId>juno-payments-sdk-base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.ngueno</groupId>
 				<artifactId>juno-payments-sdk-core</artifactId>
@@ -88,6 +96,17 @@
 				<artifactId>jose4j</artifactId>
 				<version>${jose4j.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${google-guava.version}</version>
+			</dependency>
 
 			<!-- Other -->
 			<dependency>
@@ -99,19 +118,26 @@
 
 			<!-- Test -->
 			<dependency>
+				<groupId>com.ngueno</groupId>
+				<artifactId>juno-payments-sdk-base</artifactId>
+				<version>${project.version}</version>
+				<scope>test</scope>
+				<type>test-jar</type>
+			</dependency>
+			<dependency>
 				<groupId>org.mock-server</groupId>
 				<artifactId>mockserver-junit-jupiter</artifactId>
 				<version>${mockserver.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
-	            <groupId>org.springframework.boot</groupId>
-	            <artifactId>spring-boot-dependencies</artifactId>
-	            <version>${spring-boot.version}</version>
-	            <type>pom</type>
-	            <scope>import</scope>
-        	</dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
@@ -136,6 +162,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<argLine>${argLine}</argLine>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -11,13 +12,26 @@
 		<relativePath>../juno-payments-sdk-parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.ngueno</groupId>
 	<artifactId>juno-payments-sdk-webhooks</artifactId>
 	<name>juno-payments-sdk-webhooks</name>
 
 	<dependencies>
 
 		<!-- Spring -->
+		<dependency>
+			<groupId>com.ngueno</groupId>
+			<artifactId>juno-payments-sdk-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
@@ -45,6 +59,12 @@
 		</dependency>
 
 		<!-- Test -->
+		<dependency>
+			<groupId>com.ngueno</groupId>
+			<artifactId>juno-payments-sdk-base</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

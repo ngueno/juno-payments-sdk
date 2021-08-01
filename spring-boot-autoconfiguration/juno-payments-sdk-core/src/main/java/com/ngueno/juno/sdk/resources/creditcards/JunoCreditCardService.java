@@ -1,10 +1,10 @@
 package com.ngueno.juno.sdk.resources.creditcards;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.creditcards.model.CreditCardTokenizationResource;
 import com.ngueno.juno.sdk.resources.creditcards.model.JunoCreditCardTokenizationRequest;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoCreditCardService extends JunoBaseService {

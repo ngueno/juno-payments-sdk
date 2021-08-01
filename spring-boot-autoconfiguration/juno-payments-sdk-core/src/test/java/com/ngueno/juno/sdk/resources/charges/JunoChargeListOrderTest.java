@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeListOrder;
-import com.ngueno.juno.sdk.test.AbstractTest;
+import com.ngueno.juno.sdk.test.AbstractCoreTest;
 
 import org.junit.jupiter.api.Test;
 
-class JunoChargeListOrderTest extends AbstractTest {
+class JunoChargeListOrderTest extends AbstractCoreTest {
 
     @Test
     void values() {

@@ -12,7 +12,6 @@
 		<relativePath>../juno-payments-sdk-parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.ngueno</groupId>
 	<artifactId>juno-payments-sdk-starter</artifactId>
 	<name>juno-payments-sdk-starter</name>
 	<packaging>jar</packaging>

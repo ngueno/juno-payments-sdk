@@ -2,9 +2,9 @@ package com.ngueno.juno.sdk.resources.base.http;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
 import com.ngueno.juno.sdk.model.security.JunoApiCredentials;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public abstract class JunoBaseService {

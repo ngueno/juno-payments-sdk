@@ -1,10 +1,10 @@
 package com.ngueno.juno.sdk.resources.billpayments;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.billpayments.model.BillPaymentResource;
 import com.ngueno.juno.sdk.resources.billpayments.model.JunoBillPaymentPayBillRequest;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoBillPaymentService extends JunoBaseService {

@@ -1,7 +1,5 @@
 package com.ngueno.juno.sdk.resources.charges;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.charges.model.ChargeResource;
 import com.ngueno.juno.sdk.resources.charges.model.ChargeResources;
@@ -9,6 +7,8 @@ import com.ngueno.juno.sdk.resources.charges.model.JunoChargeCreateRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeListRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeSplitUpdateRequest;
 import com.ngueno.juno.sdk.utils.HateoasDataParser;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoChargeService extends JunoBaseService {

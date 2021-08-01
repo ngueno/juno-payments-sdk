@@ -1,7 +1,5 @@
 package com.ngueno.juno.sdk.resources.subscriptions;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.subscriptions.model.JunoPlanCreateRequest;
 import com.ngueno.juno.sdk.resources.subscriptions.model.JunoSubscriptionCreateRequest;
@@ -9,6 +7,8 @@ import com.ngueno.juno.sdk.resources.subscriptions.model.PlanResource;
 import com.ngueno.juno.sdk.resources.subscriptions.model.PlanResources;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResource;
 import com.ngueno.juno.sdk.resources.subscriptions.model.SubscriptionResources;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoSubscriptionService extends JunoBaseService {

@@ -12,7 +12,6 @@
 		<relativePath>../juno-payments-sdk-parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.ngueno</groupId>
 	<artifactId>juno-payments-sdk-client</artifactId>
 	<name>juno-payments-sdk-client</name>
 
@@ -20,6 +19,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.ngueno</groupId>

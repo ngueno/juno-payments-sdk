@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.ngueno.juno.sdk.test.AbstractTest;
+import com.ngueno.juno.sdk.test.AbstractCoreTest;
 
 import org.junit.jupiter.api.Test;
 
-class JunoOAuthAccessTokenTest extends AbstractTest {
+class JunoOAuthAccessTokenTest extends AbstractCoreTest {
 
     @Test
     void constructors() {

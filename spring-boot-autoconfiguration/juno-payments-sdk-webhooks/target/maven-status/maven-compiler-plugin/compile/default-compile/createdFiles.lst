@@ -1,2 +1,13 @@
 com\ngueno\juno\sdk\config\JunoSdkWebhooksConfig.class
-com\ngueno\juno\sdk\JunoSdkWebhooksApplication.class
+com\ngueno\juno\sdk\resources\handler\JunoEventHandler.class
+com\ngueno\juno\sdk\resources\handler\DefaultJunoEventHandler.class
+com\ngueno\juno\sdk\resources\validation\JunoEventValidationService.class
+com\ngueno\juno\sdk\resources\validation\CustomHttpServletRequestWrapper$CachedBodyServletInputStream.class
+com\ngueno\juno\sdk\resources\validation\JunoEventValidationFilter.class
+com\ngueno\juno\sdk\resources\handler\JunoEventHandlerService.class
+com\ngueno\juno\sdk\resources\validation\JunoEventSignatureValidator.class
+com\ngueno\juno\sdk\resources\validation\WebhookService.class
+com\ngueno\juno\sdk\resources\handler\JunoEventHandlerController.class
+com\ngueno\juno\sdk\resources\handler\JunoEventWrapper.class
+com\ngueno\juno\sdk\resources\validation\CustomHttpServletRequestWrapper.class
+com\ngueno\juno\sdk\resources\validation\MainWebhookService.class

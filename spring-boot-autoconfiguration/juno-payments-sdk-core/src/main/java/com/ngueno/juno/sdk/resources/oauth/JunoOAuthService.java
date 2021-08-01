@@ -7,13 +7,13 @@ import static com.ngueno.juno.sdk.config.JunoApiHeaders.GRANT_TYPE;
 
 import javax.annotation.Resource;
 
+import com.ngueno.juno.sdk.model.environment.JunoEnvironment;
+import com.ngueno.juno.sdk.model.security.JunoApiCredentials;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import com.ngueno.juno.sdk.model.environment.JunoEnvironment;
-import com.ngueno.juno.sdk.model.security.JunoApiCredentials;
 
 @Service
 class JunoOAuthService {

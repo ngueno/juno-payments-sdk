@@ -1,9 +1,9 @@
 package com.ngueno.juno.sdk.resources.balance;
 
-import org.springframework.stereotype.Service;
-
 import com.ngueno.juno.sdk.resources.balance.model.BalanceResource;
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class JunoBalanceService extends JunoBaseService {

@@ -18,13 +18,13 @@ import java.nio.file.StandardOpenOption;
 
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.resources.credentials.model.JunoPublicKey;
-import com.ngueno.juno.sdk.test.AbstractTest;
+import com.ngueno.juno.sdk.test.AbstractCoreTest;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class JweUtilsTest extends AbstractTest {
+class JweUtilsTest extends AbstractCoreTest {
 
     @Test
     void encryptFile() {

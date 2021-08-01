@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.resources.base.model.BillPaymentStatus;
 import com.ngueno.juno.sdk.resources.base.model.BillPaymentType;
 import com.ngueno.juno.sdk.resources.billpayments.model.BillPaymentResource;
 import com.ngueno.juno.sdk.resources.billpayments.model.JunoBillPaymentPayBillRequest;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoBillPaymentServiceTest extends AbstractSpringBootTest {
 

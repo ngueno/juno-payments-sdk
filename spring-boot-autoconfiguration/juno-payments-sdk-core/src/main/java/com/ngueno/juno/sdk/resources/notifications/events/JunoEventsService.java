@@ -1,9 +1,9 @@
 package com.ngueno.juno.sdk.resources.notifications.events;
 
-import org.springframework.stereotype.Component;
-
 import com.ngueno.juno.sdk.resources.base.http.JunoBaseService;
 import com.ngueno.juno.sdk.resources.notifications.model.EventTypeResources;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class JunoEventsService extends JunoBaseService {

@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.annotation.Resource;
 
-import org.junit.jupiter.api.Test;
-
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.resources.base.model.Charge;
 import com.ngueno.juno.sdk.resources.base.model.ChargeBilling;
@@ -19,6 +17,8 @@ import com.ngueno.juno.sdk.resources.charges.model.JunoChargeCreateRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeListRequest;
 import com.ngueno.juno.sdk.resources.charges.model.JunoChargeSplitUpdateRequest;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 class JunoChargeServiceTest extends AbstractSpringBootTest {
 

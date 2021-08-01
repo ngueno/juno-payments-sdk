@@ -9,7 +9,7 @@
 		<groupId>com.ngueno</groupId>
 		<artifactId>juno-payments-sdk-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath>../juno-payments-sdk-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>com.ngueno</groupId>
@@ -23,7 +23,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ngueno</groupId>
-			<artifactId>juno-sdk-starter</artifactId>
+			<artifactId>juno-payments-sdk-starter</artifactId>
 		</dependency>
 
 		<!-- Other -->

@@ -8,17 +8,20 @@
 		<groupId>com.ngueno</groupId>
 		<artifactId>juno-payments-sdk-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath>../juno-payments-sdk-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>com.ngueno</groupId>
 	<artifactId>juno-payments-sdk-webhooks</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>juno-payments-sdk-webhooks</name>
 
 	<dependencies>
 
 		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -70,14 +73,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,13 +1,9 @@
 package com.ngueno.juno.sdk.test;
 
 import static com.ngueno.juno.sdk.resources.base.model.LegalRepresentativeType.INDIVIDUAL;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 
 import com.ngueno.juno.sdk.resources.base.model.Address;
@@ -19,7 +15,7 @@ import com.ngueno.juno.sdk.resources.base.model.LegalRepresentative;
 
 import org.mockserver.model.MediaType;
 
-public class FixtureHelper {
+public class FixtureHelper extends BaseFixtureHelper {
 
     public static final String EMAIL = "mysdk@developer.com.br";
     public static final String PHONE = "41999002102";
@@ -75,32 +71,6 @@ public class FixtureHelper {
     public static final MediaType MEDIA_TYPE_TEXT_PLAIN = new MediaType("text", "plain;charset=UTF-8");
 
     public static final String EXAMPLE_DOCUMENT_FILENAME = "example_document.pdf";
-
-    public static String getResource(String... resources) {
-        return readFromResource(getResourcePath(resources));
-    }
-
-    public static Path getResourcePath(String... resources) {
-        Path resourcePath = getBaseResourcePath();
-
-        for (String resource : resources) {
-            resourcePath = resourcePath.resolve(resource);
-        }
-        return resourcePath;
-    }
-
-    private static Path getBaseResourcePath() {
-        return Paths.get("src", "test", "resources");
-    }
-
-    private static String readFromResource(Path path) {
-        try {
-            return Files.readString(path);
-        } catch (IOException e) {
-            fail("Unable to load resource", e);
-        }
-        return null;
-    }
 
     public static Path getMockDocumentPath() {
         return getResourcePath("etc", EXAMPLE_DOCUMENT_FILENAME);

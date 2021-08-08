@@ -14,7 +14,7 @@ public class JunoEventWrapper {
 
     @Override
     public String toString() {
-        return eventJson.toString();
+        return eventJson.toPrettyString();
     }
 
     public String getEventId() {

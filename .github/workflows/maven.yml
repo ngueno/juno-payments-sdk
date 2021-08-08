@@ -23,4 +23,4 @@ jobs:
         distribution: 'adopt'
     
     - name: Build juno-payments-sdk-parent
-      run: mvn -B package --file ./spring-boot-autoconfiguration/juno-payments-sdk-parent/pom.xml
+      run: mvn -B clean package --file ./spring-boot-autoconfiguration/juno-payments-sdk-parent/pom.xml

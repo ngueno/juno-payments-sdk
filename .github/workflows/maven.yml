@@ -22,8 +22,5 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     
-    - name: Build juno-sdk-autoconfiguration
-      run: mvn -B package --file ./juno-sdk-autoconfiguration/juno-sdk-autoconfiguration/pom.xml
-      
-    - name: Build juno-sdk-starter
-      run: mvn -B package --file ./juno-sdk-autoconfiguration/juno-sdk-starter/pom.xml
+    - name: Build juno-payments-sdk-parent
+      run: mvn -B package --file ./spring-boot-autoconfiguration/juno-payments-sdk-parent/pom.xml

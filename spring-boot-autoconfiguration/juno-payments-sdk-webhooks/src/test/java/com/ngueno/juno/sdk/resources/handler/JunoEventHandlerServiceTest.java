@@ -9,7 +9,7 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 import java.util.Set;
 
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
-import com.ngueno.juno.sdk.test.AbstractTestSuite;
+import com.ngueno.juno.sdk.test.AbstractWebhookTest;
 import com.ngueno.juno.sdk.test.BaseFixtureHelper;
 import com.ngueno.juno.sdk.test.JacksonUtils;
 
@@ -19,7 +19,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-class JunoEventHandlerServiceTest extends AbstractTestSuite {
+class JunoEventHandlerServiceTest extends AbstractWebhookTest {
 
     @BeforeEach
     void configure() {

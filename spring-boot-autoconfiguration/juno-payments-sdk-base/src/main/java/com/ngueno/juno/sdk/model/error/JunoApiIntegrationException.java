@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 public class JunoApiIntegrationException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
@@ -25,10 +25,6 @@ public class JunoApiIntegrationException extends RuntimeException {
 
     public JunoApiIntegrationException(String message) {
         super(message);
-    }
-
-    public JunoApiIntegrationException(Throwable cause) {
-        super(cause);
     }
 
 }

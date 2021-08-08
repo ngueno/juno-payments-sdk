@@ -2,21 +2,21 @@ package com.ngueno.juno.sdk.resources.validation;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class JunoEventValidationService {
 
     public void validateEvent(Map<String, String[]> requestParams, String eventPayload, String eventSignature) {
-        String webhookSecret = webhookService.findWebhookSecret(requestParams);
-        signatureValidator.validate(webhookSecret, eventPayload, eventSignature);
+        signatureValidator.validate(webhookService.findWebhookSecret(requestParams), eventPayload, eventSignature);
     }
 
-    @Autowired
+    @Resource
     private WebhookService webhookService;
 
-    @Autowired
+    @Resource
     private JunoEventSignatureValidator signatureValidator;
 
 }

@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.node.TextNode;
-import com.ngueno.juno.sdk.test.AbstractTestSuite;
+import com.ngueno.juno.sdk.test.AbstractWebhookTest;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
-class DefaultJunoEventHandlerTest extends AbstractTestSuite {
+class DefaultJunoEventHandlerTest extends AbstractWebhookTest {
 
     @Test
     void getEventType() {

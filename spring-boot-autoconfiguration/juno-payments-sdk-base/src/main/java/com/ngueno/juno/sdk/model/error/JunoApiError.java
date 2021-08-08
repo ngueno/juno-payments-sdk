@@ -27,5 +27,6 @@ public class JunoApiError implements Serializable {
         private String field;
         private String message;
         private String errorCode;
+
     }
 }

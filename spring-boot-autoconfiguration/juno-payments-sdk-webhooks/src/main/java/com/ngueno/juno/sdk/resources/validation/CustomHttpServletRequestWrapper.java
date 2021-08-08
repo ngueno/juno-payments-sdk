@@ -58,7 +58,7 @@ public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
         return new BufferedReader(new InputStreamReader(new ByteArrayInputStream(cachedRequestAsBytes)));
     }
 
-    protected static class CachedBodyServletInputStream extends ServletInputStream {
+    public static class CachedBodyServletInputStream extends ServletInputStream {
 
         private InputStream cachedBodyInputStream;
 

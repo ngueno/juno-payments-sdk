@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.List;
 
-import com.ngueno.juno.sdk.test.AbstractTestSuite;
+import com.ngueno.juno.sdk.test.AbstractWebhookTest;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-class JunoEventHandlerControllerTest extends AbstractTestSuite {
+class JunoEventHandlerControllerTest extends AbstractWebhookTest {
 
     @Test
     void annotations() {

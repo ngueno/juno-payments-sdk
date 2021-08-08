@@ -2,9 +2,11 @@ package com.ngueno.juno.sdk.resources.validation;
 
 import static com.ngueno.juno.sdk.test.FixtureHelper.EVENT_SIGNATURE;
 import static com.ngueno.juno.sdk.test.FixtureHelper.WEBHOOK_SECRET;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.google.common.hash.Hashing;
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.test.AbstractWebhookTest;
 
@@ -15,7 +17,9 @@ class JunoEventSignatureValidatorTest extends AbstractWebhookTest {
 
     @Test
     void validate() {
-        validator.validate(WEBHOOK_SECRET, helper().getEventPayload(), EVENT_SIGNATURE);
+        String eventPayload = helper().getEventPayload();
+        String expectedMatchingSignature = Hashing.hmacSha256(WEBHOOK_SECRET.getBytes(UTF_8)).hashString(eventPayload, UTF_8).toString();
+        validator.validate(WEBHOOK_SECRET, helper().getEventPayload(), expectedMatchingSignature);
     }
 
     @Test

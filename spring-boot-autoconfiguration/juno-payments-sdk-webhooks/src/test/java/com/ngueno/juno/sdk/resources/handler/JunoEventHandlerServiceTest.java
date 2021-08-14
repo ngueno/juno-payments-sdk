@@ -11,7 +11,7 @@ import java.util.Set;
 import com.ngueno.juno.sdk.model.error.JunoApiIntegrationException;
 import com.ngueno.juno.sdk.test.AbstractWebhookTest;
 import com.ngueno.juno.sdk.test.BaseFixtureHelper;
-import com.ngueno.juno.sdk.test.JacksonUtils;
+import com.ngueno.juno.sdk.utils.JacksonUtils;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

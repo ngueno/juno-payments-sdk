@@ -11,7 +11,6 @@ import com.ngueno.juno.sdk.resources.documents.model.DocumentResources;
 import com.ngueno.juno.sdk.resources.documents.model.JunoDocumentFile;
 import com.ngueno.juno.sdk.test.AbstractSpringBootTest;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class JunoDocumentServiceTest extends AbstractSpringBootTest {
@@ -45,7 +44,6 @@ class JunoDocumentServiceTest extends AbstractSpringBootTest {
         assertDocument(resource);
     }
 
-    @Disabled
     @Test
     void uploadDocumentUsingEncryption() {
         mockServerManager().expectCredentialsPublicKeyRequest();

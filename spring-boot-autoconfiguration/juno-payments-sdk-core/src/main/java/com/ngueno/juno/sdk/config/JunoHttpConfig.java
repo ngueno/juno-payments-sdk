@@ -68,6 +68,7 @@ public class JunoHttpConfig {
                 .rootUri(junoEnvironment.getApiv2Endpoint()) //
                 .setConnectTimeout(junoEnvironment.getApiv2TimeoutDuration()) //
                 .setReadTimeout(junoEnvironment.getApiv2TimeoutDuration()) //
+                .setBufferRequestBody(false) //
                 .defaultHeader(X_API_VERSION, API_VERSION) //
                 .build(); //
 

@@ -1,7 +1,5 @@
 package com.ngueno.juno.sdk.test.mockserver;
 
-import static com.ngueno.juno.sdk.config.JunoApiHeaders.CONTENT_ENCODING;
-import static com.ngueno.juno.sdk.config.JunoApiHeaders.CONTENT_ENCODING_GZIP;
 import static com.ngueno.juno.sdk.test.FixtureHelper.MEDIA_TYPE_TEXT_PLAIN;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
@@ -685,7 +683,6 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
         mockServer.when( //
                 getRequestExpectation(APPLICATION_OCTET_STREAM) //
                         .withMethod(POST.name()) //
-                        .withHeader(new Header(CONTENT_ENCODING, CONTENT_ENCODING_GZIP)) //
                         .withPath("/documents/" + documentId + "/files"))//
                 .respond( //
                         response(getResource("documents", "id", "POST.mock")) //

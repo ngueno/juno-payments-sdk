@@ -1,4 +1,4 @@
-package com.ngueno.juno.sdk.test;
+package com.ngueno.juno.sdk.utils;
 
 import static org.junit.jupiter.api.Assertions.fail;
 

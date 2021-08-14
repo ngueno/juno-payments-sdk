@@ -10,7 +10,7 @@ import static com.ngueno.juno.sdk.test.FixtureHelper.getResource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.ngueno.juno.sdk.test.AbstractCoreTest;
-import com.ngueno.juno.sdk.test.JacksonUtils;
+import com.ngueno.juno.sdk.utils.JacksonUtils;
 
 import org.junit.jupiter.api.Test;
 

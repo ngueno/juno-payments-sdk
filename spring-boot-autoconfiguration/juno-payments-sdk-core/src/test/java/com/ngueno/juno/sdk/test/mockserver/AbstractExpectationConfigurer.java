@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ngueno.juno.sdk.config.JunoApiHeaders;
 import com.ngueno.juno.sdk.test.FixtureHelper;
-import com.ngueno.juno.sdk.test.JacksonUtils;
+import com.ngueno.juno.sdk.utils.JacksonUtils;
 
 import org.assertj.core.util.Arrays;
 import org.mockserver.model.Header;

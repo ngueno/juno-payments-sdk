@@ -11,7 +11,7 @@ import javax.servlet.ServletInputStream;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ngueno.juno.sdk.test.AbstractWebhookTest;
-import com.ngueno.juno.sdk.test.JacksonUtils;
+import com.ngueno.juno.sdk.utils.JacksonUtils;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;

@@ -643,18 +643,6 @@ public final class MockServerManager extends AbstractExpectationConfigurer {
                 ); //
     }
 
-    public void expectDocumentsFind() {
-        mockServer.when( //
-                getRequestExpectation() //
-                        .withMethod(GET.name()) //
-                        .withPath("/documents")) //
-                .respond( //
-                        response(getResource("documents", "GET.mock")) //
-                                .withContentType(APPLICATION_JSON_UTF_8) //
-                                .withStatusCode(200) //
-                ); //
-    }
-
     public void expectDocumentsGet(String documentId) {
         mockServer.when( //
                 getRequestExpectation() //

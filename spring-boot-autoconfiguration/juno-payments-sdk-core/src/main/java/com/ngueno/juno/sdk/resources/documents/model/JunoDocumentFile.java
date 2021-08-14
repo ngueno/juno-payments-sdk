@@ -58,7 +58,7 @@ public class JunoDocumentFile implements Serializable {
     }
 
     public boolean hasFileName() {
-        return StringUtils.isBlank(fileName);
+        return StringUtils.isNotBlank(fileName);
     }
 
 }
